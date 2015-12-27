@@ -14,8 +14,13 @@
 
 /* heuristics */
 namespace heu {
-	std::vector<Card> playExtremes(const History& history, const Hand& hand) {
-		return std::vector<Card>();
+	std::pair<std::vector<Card>, std::vector<double>> playExtremes(const History& history, const Hand& hand) {
+		std::pair<std::vector<Card>, std::vector<double>> rtn;
+		if(hand.cards[0].size() > 0) {
+			rtn.push_back(hands.cards[0][0]);
+			rtn.push_back(hands.cards[0][0]);
+		}
+		return rtn;
 	}
 }
 
