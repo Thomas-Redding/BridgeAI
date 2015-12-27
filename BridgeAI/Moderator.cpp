@@ -8,11 +8,28 @@
 
 #include "Moderator.hpp"
 
-Moderator::Moderator(Player* A, Player* B, Player* C, Player* D) {
+Moderator::Moderator(Player* A, Player* B, Player* C, Player* D) : history(new History()) {
     players[0] = A;
     players[1] = B;
     players[2] = C;
     players[3] = D;
+}
+
+int Moderator::play() {
+    
+    // deal cards
+    shuffle();
+    players[0]->deal(&deck[0]);
+    players[1]->deal(&deck[13]);
+    players[2]->deal(&deck[26]);
+    players[3]->deal(&deck[39]);
+    
+    delete history;
+    history = new History();
+    
+    // TODO
+    
+    return 0;
 }
 
 void Moderator::shuffle() {

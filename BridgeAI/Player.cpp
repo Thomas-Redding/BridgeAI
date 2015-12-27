@@ -7,3 +7,10 @@
 //
 
 #include "Player.hpp"
+
+void Player::deal(const Card* dealtCards) {
+    if (hand != nullptr) {
+        delete hand;
+    }
+    hand = new Hand(dealtCards);
+}

@@ -10,13 +10,17 @@
 #define Player_hpp
 
 #include "History.hpp"
+#include "Hand.hpp"
 
 class Player {
 public:
-    Player(History *history) : history(history) {};
+    Player(History *history) : history(history), hand(nullptr) {};
+    ~Player() { if (hand != nullptr) delete hand; }
+    virtual void deal(const Card*);
     virtual Bid bid() = 0;
     virtual Card play() = 0;
 private:
+    Hand* hand;
     History* history;
 };
 
