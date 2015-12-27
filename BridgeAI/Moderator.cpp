@@ -16,18 +16,20 @@ Moderator::Moderator(Player* A, Player* B, Player* C, Player* D) : history(new H
 }
 
 int Moderator::play() {
-    
+	
+	delete history;
+	history = new History();
+	
     // deal cards
     shuffle();
-    players[0]->deal(&deck[0]);
-    players[1]->deal(&deck[13]);
-    players[2]->deal(&deck[26]);
-    players[3]->deal(&deck[39]);
-    
-    delete history;
-    history = new History();
-    
-    // TODO
+    players[0]->deal(&deck[0], history);
+    players[1]->deal(&deck[13], history);
+    players[2]->deal(&deck[26], history);
+    players[3]->deal(&deck[39], history);
+	
+	for (int i=0; i<13; i++) {
+		// todo
+	}
     
     return 0;
 }
