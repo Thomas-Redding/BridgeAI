@@ -23,6 +23,10 @@ enum Suit {
 /* a "null" card has (suit == value == -1) */
 class Card {
 public:
+	Card() {
+		suit = null;
+		value = -1;
+	}
 	Card(Suit s, int v) {
 		suit = s;
 		value = v;
