@@ -16,12 +16,12 @@ class Player {
 public:
     Player(History *history) : history(history), hand(nullptr) {};
     ~Player() { if (hand != nullptr) delete hand; }
-    virtual void deal(const Card*);
+    virtual void deal(const Card*, const History* history);
     virtual Bid bid() = 0;
     virtual Card play() = 0;
 private:
     Hand* hand;
-    History* history;
+    const History* history;
 };
 
 #endif /* Player_hpp */

@@ -12,6 +12,7 @@
 		28E9E29A1C30975600BC495A /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E9E2981C30975600BC495A /* Player.cpp */; };
 		28E9E29D1C3097A500BC495A /* History.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E9E29B1C3097A500BC495A /* History.cpp */; };
 		EC41B4C51C3061F600028691 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC41B4C31C3061F600028691 /* Hand.cpp */; };
+		EC41B4C81C309EB500028691 /* RandomPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC41B4C61C309EB500028691 /* RandomPlayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,8 @@
 		28E9E29F1C30995500BC495A /* heu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heu.hpp; sourceTree = "<group>"; };
 		EC41B4C31C3061F600028691 /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
 		EC41B4C41C3061F600028691 /* Hand.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Hand.hpp; sourceTree = "<group>"; };
+		EC41B4C61C309EB500028691 /* RandomPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomPlayer.cpp; sourceTree = "<group>"; };
+		EC41B4C71C309EB500028691 /* RandomPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RandomPlayer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 				28E9E2961C3060C900BC495A /* Moderator.hpp */,
 				28E9E2981C30975600BC495A /* Player.cpp */,
 				28E9E2991C30975600BC495A /* Player.hpp */,
+				EC41B4C61C309EB500028691 /* RandomPlayer.cpp */,
+				EC41B4C71C309EB500028691 /* RandomPlayer.hpp */,
 				28E9E29F1C30995500BC495A /* heu.hpp */,
 				28E9E2931C305FD800BC495A /* Card.hpp */,
 				EC41B4C41C3061F600028691 /* Hand.hpp */,
@@ -143,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E9E29A1C30975600BC495A /* Player.cpp in Sources */,
+				EC41B4C81C309EB500028691 /* RandomPlayer.cpp in Sources */,
 				EC41B4C51C3061F600028691 /* Hand.cpp in Sources */,
 				28E9E29D1C3097A500BC495A /* History.cpp in Sources */,
 				28A24F7D1C305F0900A664BE /* main.cpp in Sources */,
