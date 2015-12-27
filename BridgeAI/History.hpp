@@ -17,10 +17,16 @@ struct Bid {
 	Suit suit;
 };
 
+struct Trick {
+	int leader;
+	Card cards[4];
+};
+
 class History {
 public:
 	int dealer;
-	std::vector<Bid>bids;
+	std::vector<Bid> bids;
+	std::vector<Trick> tricks;
 };
 
 #endif /* History_hpp */
