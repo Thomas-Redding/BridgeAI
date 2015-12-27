@@ -11,6 +11,7 @@
 
 #include <cstdlib>
 #include <vector>
+#include <stdexcept>
 #include "Card.hpp"
 #include "Player.hpp"
 
@@ -19,6 +20,7 @@ class Moderator {
 public:
     
     Moderator(Player* A, Player* B, Player* C, Player* D);
+	~Moderator();
     int play(); // TODO: play a game, return the points
     
 private:
