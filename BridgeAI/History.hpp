@@ -13,6 +13,7 @@
 #include "Card.hpp"
 
 struct Bid {
+    Bid(int level, Suit suit) : level(level), suit(suit) {};
 	int level;
 	Suit suit;
 };

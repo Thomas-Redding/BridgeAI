@@ -7,3 +7,14 @@
 //
 
 #include "RandomPlayer.hpp"
+
+Bid RandomPlayer::bid() {
+    if (history->bids.size() == 0) {
+        return Bid(1, club);
+    }
+    return Bid(0, null);
+}
+
+Card RandomPlayer::play() {
+    return Card(null, 0);
+}
