@@ -9,11 +9,12 @@
 #ifndef Moderator_hpp
 #define Moderator_hpp
 
+#include <cstdlib>
 #include <vector>
 #include "Card.hpp"
 
 class Moderator {
-	std::vector<std::vector<Card>> hands;
+	Card deck[52];
 	void shuffle();
 };
 

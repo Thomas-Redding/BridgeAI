@@ -19,7 +19,16 @@ enum Suit {
 	notrump = 4
 };
 
-struct Card {
+class Card {
+public:
+	Card(Suit s, int v) {
+		suit = s;
+		value = v;
+	}
+	Card(int s, int v) {
+		suit = Suit(s);
+		value = v;
+	}
 	Suit suit;
 	int value;
 };
