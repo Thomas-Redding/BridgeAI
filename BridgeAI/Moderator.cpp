@@ -32,11 +32,9 @@ int Moderator::play() {
     players[3]->deal(3, &deck[39], history);
 	
 	// bid
-	Bid currentBid = Bid;
 	while (true) {
 		for (int i=0; i<4; i++) {
 			Bid bid = players[i]->bid();
-			double 0.1f * bid.suit + bid.level
 		}
 	}
     
