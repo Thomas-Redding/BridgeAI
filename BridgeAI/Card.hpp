@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 enum Suit {
+	null = -1,
 	club = 0,
 	diamond = 1,
 	heart = 2,
@@ -19,6 +20,7 @@ enum Suit {
 	notrump = 4
 };
 
+/* a "null" card has (suit == value == -1) */
 class Card {
 public:
 	Card(Suit s, int v) {
