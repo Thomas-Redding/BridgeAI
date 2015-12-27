@@ -9,10 +9,11 @@
 #include "Hand.hpp"
 #include <algorithm>
 
-Hand::Hand(const Card* dealtCards) {
-    cards = new Card[handSize];
+Hand::Hand(const Card* dealt) {
     for (int i = 0; i < handSize; i++) {
-        cards[i] = dealtCards[i];
+        cards[int(dealt[i].suit)].push_back(dealt[i]);
     }
-    std::sort(cards, cards + handSize, [](Card a, Card b) { return a.suit == b.suit ? a.value < b.value : a.suit < b.suit; });
+    for (int i = 0; i < handSize; i++) {
+        std::sort(cards[i].begin(), cards[i].end(), [](Card a, Card b) { return a.value < b.value; });
+    }
 }

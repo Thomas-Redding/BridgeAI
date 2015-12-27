@@ -10,16 +10,18 @@
 #define Hand_hpp
 
 #include <stdio.h>
+#include <vector>
+#include <array>
 #include "Card.hpp"
 
 class Hand {
 public:
-    Hand() : cards(nullptr) {};
+    Hand() {};
     Hand(const Card* cards);
-    ~Hand();
 private:
     const size_t handSize = 13;
-    Card* cards;
+    static const size_t numberOfSuits = 4;
+    std::vector<Card> cards[numberOfSuits];
 };
 
 #endif /* Hand_hpp */
