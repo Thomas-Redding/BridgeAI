@@ -18,8 +18,7 @@ class Hand {
 public:
     Hand() {};
     Hand(const Card* cards);
-private:
-    static const size_t handSize = 13;
+    const size_t handSize = 13;
     static const size_t numberOfSuits = 4;
     std::vector<Card> cards[numberOfSuits];
 };

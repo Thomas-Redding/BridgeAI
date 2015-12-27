@@ -36,6 +36,7 @@
 		28E9E2991C30975600BC495A /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		28E9E29B1C3097A500BC495A /* History.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = History.cpp; sourceTree = "<group>"; };
 		28E9E29C1C3097A500BC495A /* History.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = History.hpp; sourceTree = "<group>"; };
+		28E9E29F1C30995500BC495A /* heu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heu.hpp; sourceTree = "<group>"; };
 		EC41B4C31C3061F600028691 /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
 		EC41B4C41C3061F600028691 /* Hand.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Hand.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,11 +74,12 @@
 				28A24F7C1C305F0900A664BE /* main.cpp */,
 				28E9E2951C3060C900BC495A /* Moderator.cpp */,
 				28E9E2961C3060C900BC495A /* Moderator.hpp */,
+				28E9E2981C30975600BC495A /* Player.cpp */,
+				28E9E2991C30975600BC495A /* Player.hpp */,
+				28E9E29F1C30995500BC495A /* heu.hpp */,
 				28E9E2931C305FD800BC495A /* Card.hpp */,
 				EC41B4C41C3061F600028691 /* Hand.hpp */,
 				EC41B4C31C3061F600028691 /* Hand.cpp */,
-				28E9E2981C30975600BC495A /* Player.cpp */,
-				28E9E2991C30975600BC495A /* Player.hpp */,
 				28E9E29B1C3097A500BC495A /* History.cpp */,
 				28E9E29C1C3097A500BC495A /* History.hpp */,
 			);
