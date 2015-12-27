@@ -12,9 +12,12 @@
 #include "History.hpp"
 
 class Player {
-	Player(History *history);
-	void newGame();
-	void bid();
+public:
+    Player(History *history) : history(history) {};
+    virtual Bid bid() = 0;
+    virtual Card play() = 0;
+private:
+    History* history;
 };
 
 #endif /* Player_hpp */
