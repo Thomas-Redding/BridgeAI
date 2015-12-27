@@ -8,9 +8,10 @@
 
 #include "Player.hpp"
 
-void Player::deal(const Card* dealtCards) {
+void Player::deal(const Card* dealtCards, const History* givenHistory) {
     if (hand != nullptr) {
         delete hand;
     }
     hand = new Hand(dealtCards);
+    history = givenHistory;
 }
