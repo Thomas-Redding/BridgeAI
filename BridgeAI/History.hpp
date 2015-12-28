@@ -21,6 +21,7 @@ struct Bid {
 struct Trick {
 	int leader;
 	Card cards[numberOfSuits];
+    int howManyCardsSoFar() const;
 };
 
 class History {
