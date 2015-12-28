@@ -16,7 +16,6 @@ Hand::Hand(const Card* dealt) {
     for (int i = 0; i < handSize; i++) {
         std::sort(cards[i].begin(), cards[i].end(), [](Card a, Card b) { return a.value < b.value; });
     }
-}
 
 const Card& Hand::operator[](size_t i) const {
     if (i < cards[0].size()) {
@@ -78,4 +77,4 @@ bool Hand::play(Card c) {
     }
     cards[s].erase(cards[s].begin() + i);
     return true;
-}
+}}
