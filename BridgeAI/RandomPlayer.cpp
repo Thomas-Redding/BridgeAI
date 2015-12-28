@@ -12,9 +12,9 @@ Bid RandomPlayer::bid() {
     if (history->bids.size() == 0) {
         return Bid(club, 1);
     }
-    return Bid(null, 0);
+    return Bid(naught, 0);
 }
 
 Card RandomPlayer::play() {
-    return Card(null, 0);
+    return Card(naught, 0);
 }

@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 enum Suit {
-	null = -1,
+	naught = -1,
 	club = 0,
 	diamond = 1,
 	heart = 2,
@@ -24,7 +24,7 @@ enum Suit {
 class Card {
 public:
 	Card() {
-		suit = null;
+		suit = naught;
 		value = -1;
 	}
 	Card(Suit s, int v) {

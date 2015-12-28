@@ -16,20 +16,17 @@
 #include "Player.hpp"
 
 class Moderator {
-    
 public:
-    
     Moderator(Player* A, Player* B, Player* C, Player* D);
-	~Moderator();
     int play(); // TODO: play a game, return the points
     
 private:
-
-    void shuffle();
-    
     Card deck[52];
     Player* players[4];
-    History* history;
+    History history;
+	
+	void shuffle();
+	int getIndexOfCard(Card &card, int player);
 };
 
 #endif /* Moderator_hpp */
