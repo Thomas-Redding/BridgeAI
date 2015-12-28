@@ -22,10 +22,10 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		for (int i=0; i<52; i++) {
 			deck[i] = lastDeck[i];
 		}
-		players[0]->deal(0, &deck[13], &history);
-		players[1]->deal(1, &deck[26], &history);
-		players[2]->deal(2, &deck[39], &history);
-		players[3]->deal(3, &deck[0], &history);
+		players[0]->deal(1, &deck[13], &history);
+		players[1]->deal(2, &deck[26], &history);
+		players[2]->deal(3, &deck[39], &history);
+		players[3]->deal(0, &deck[0], &history);
 		history = originalHistory;
 		history.dealer = 3;
 	}
@@ -210,7 +210,8 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 }
 
 int Moderator::getIndexOfCard(Card &card, int player, bool redoAndFlip) {
-	player = (player + 1)%4;
+	if(redoAndFlip)
+		player = (player + 1)%4;
 	for (int i = 0; i < 13; i++) {
 		if(deck[i + 13 * player] == card)
 			return i + 13 * player;
@@ -236,7 +237,8 @@ void Moderator::shuffle() {
 }
 
 int Moderator::hasVoidInSuit(Suit suit, int player, bool redoAndFlip) {
-	player = (player + 1)%4;
+	if(redoAndFlip)
+		player = (player + 1)%4;
 	for (int i = 0; i < 13; i++) {
 		if(deck[13 * player + i].suit == suit)
 			return false;
