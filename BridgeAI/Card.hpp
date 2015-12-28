@@ -36,16 +36,16 @@ public:
 		suit = s;
 		value = v;
 	}
-	Card(int s, int v) {
-		suit = Suit(s);
-		value = v;
-	}
 	Suit suit;
 	int value;
 	
 	bool operator==(const Card &other) const {
 		return suit == other.suit && value == other.value;
 	}
+    
+    int toIndex() const {
+        return numberOfCardsPerSuit * int(suit) + value;
+    }
 	
 	friend std::ostream& operator<<(std::ostream& o, const Card& c) {
 		if(c.suit == club)

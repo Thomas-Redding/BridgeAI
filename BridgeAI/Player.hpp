@@ -27,7 +27,7 @@ public:
     virtual Bid bid() = 0;
     virtual Card play() = 0;
 	void setPosition(Position pos) { position = pos;}
-protected:
+
     Hand* hand;
     const History* history;
     int id;

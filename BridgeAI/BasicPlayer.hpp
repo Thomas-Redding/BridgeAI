@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Player.hpp"
+#include "heu.hpp"
 
 class BasicPlayer : public Player {
 public:

@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "heu.hpp"
 #include "RandomPlayer.hpp"
 #include "Moderator.hpp"
 #include <time.h>
