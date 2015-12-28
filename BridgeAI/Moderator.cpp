@@ -31,7 +31,7 @@ int Moderator::play() {
 	while (true) {
 		if(passCount >= 4)
 			break;
-		for (int i=0; i<4; i++) {
+		for (int i = 0; i < 4; i++) {
 			if(passCount >= 4)
 				break;
 			Bid bid = players[i]->bid();
@@ -51,20 +51,20 @@ int Moderator::play() {
 	
 	// find dummy
 	int dummy;
-	for (int i=0; i<history.bids.size(); i++) {
-		if (i%2 == lastBidPerson%2) {
+	for (int i = 0; i < history.bids.size(); i++) {
+		if (i % 2 == lastBidPerson%2) {
 			if(history.bids[i].suit == history.bids[history.bids.size()-1].suit) {
-				dummy = i%4;
+				dummy = i % 4;
 				break;
 			}
 		}
 	}
 	
-	int leader = (dummy-1)%4;
+	int leader = (dummy - 1) % 4;
 	if(leader < 0)
 		leader += 4;
 	
-	for (int i=0; i<13; i++) {
+	for (int i = 0; i < 13; i++) {
 		// set up trick
 		history.tricks.push_back(Trick());
 		Trick &trick = history.tricks[history.tricks.size()-1];
@@ -80,8 +80,8 @@ int Moderator::play() {
 		deck[cardIndex].value = 0;
 		
 		// follow the lead
-		for (int j=1; j<4; j++) {
-			int k = (leader+j)%4;
+		for (int j = 1; j < 4; j++) {
+			int k = (leader + j) % 4;
 			if(k < 0)
 				k += 4;
 			Card card = players[k]->play();
@@ -98,7 +98,7 @@ int Moderator::play() {
 		// determine who won - todo
 		int winner = 0;
 		int highest = trick.cards[0].value;
-		for(int j=1; j<4; j++) {
+		for(int j = 1; j < 4; j++) {
 			if(trick.cards[j].suit == trick.cards[0].suit && trick.cards[j].value > highest) {
 				highest = trick.cards[j].value;
 				winner = j;
@@ -113,9 +113,9 @@ int Moderator::play() {
 }
 
 int Moderator::getIndexOfCard(Card &card, int player) {
-	for (int i=0; i<13; i++) {
-		if(deck[13*i+player] == card)
-			return 13*i+player;
+	for (int i = 0; i < 13; i++) {
+		if(deck[13 * i + player] == card)
+			return 13 * i + player;
 	}
 	return -1;
 }
