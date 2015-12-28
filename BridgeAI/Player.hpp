@@ -12,6 +12,13 @@
 #include "History.hpp"
 #include "Hand.hpp"
 
+enum Position {
+	offense,
+	dummy,
+	left_of_dummy,
+	right_of_dummy
+};
+
 class Player {
 public:
     Player(History *history) : history(history), hand(nullptr) {};
@@ -19,10 +26,12 @@ public:
     virtual void deal(int id, const Card*, const History* history);
     virtual Bid bid() = 0;
     virtual Card play() = 0;
+	void setPosition(Position pos) { position = pos;}
 protected:
     Hand* hand;
     const History* history;
     int id;
+	Position position;
 };
 
 #endif /* Player_hpp */

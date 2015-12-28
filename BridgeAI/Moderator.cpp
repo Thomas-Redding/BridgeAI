@@ -55,20 +55,46 @@ std::pair<int, int> Moderator::play() {
 		return std::pair<int, int>(0, 0); // all passes
 	
 	// find dummy
-	int dummy;
+	int dummyPlayer;
 	for (int i = 0; i < history.bids.size(); i++) {
 		if (i % 2 == lastBidPerson%2) {
 			if(history.bids[i].suit == lastBid.suit) {
-				dummy = i % 4;
+				dummyPlayer = i % 4;
 				break;
 			}
 		}
 	}
 	
-	int leader = (dummy - 1) % 4;
+	int leader = (dummyPlayer - 1) % 4;
 	if(leader < 0)
 		leader += 4;
 	int trickCount = 0;
+	
+	// give players positions
+	if (dummyPlayer == 0) {
+		players[0]->setPosition(dummy);
+		players[1]->setPosition(right_of_dummy);
+		players[2]->setPosition(offense);
+		players[3]->setPosition(left_of_dummy);
+	}
+	else if (dummyPlayer == 1) {
+		players[1]->setPosition(dummy);
+		players[2]->setPosition(right_of_dummy);
+		players[3]->setPosition(offense);
+		players[0]->setPosition(left_of_dummy);
+	}
+	else if (dummyPlayer == 2) {
+		players[2]->setPosition(dummy);
+		players[3]->setPosition(right_of_dummy);
+		players[0]->setPosition(offense);
+		players[1]->setPosition(left_of_dummy);
+	}
+	else if (dummyPlayer == 3) {
+		players[3]->setPosition(dummy);
+		players[0]->setPosition(right_of_dummy);
+		players[1]->setPosition(offense);
+		players[2]->setPosition(left_of_dummy);
+	}
 	
 	for (int i = 0; i < 13; i++) {
 		// set up trick
@@ -132,7 +158,7 @@ std::pair<int, int> Moderator::play() {
 	}
 	
 	// score game
-	if(dummy%2 == 0) {
+	if(dummyPlayer%2 == 0) {
 		// We won the bidding
 		if(trickCount >= lastBid.level) {
 			// made contract
