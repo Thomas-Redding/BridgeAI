@@ -121,7 +121,6 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 			throw std::out_of_range("player lead a card not in their hand\n");
 		}
 		trick.cards[0] = card;
-		std::cout << leader << ": " << card << ",";
 		deck[cardIndex].suit = naught;
 		deck[cardIndex].value = 0;
 		
@@ -140,12 +139,9 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 				}
 			}
 			trick.cards[j] = card;
-			std::cout << card << ",";
 			deck[cardIndex].suit = naught;
 			deck[cardIndex].value = 0;
 		}
-		
-		std::cout << "\n\n";
 		
 		// determine who won - todo
 		int winner = 0;
@@ -188,7 +184,7 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 				throw std::out_of_range("error\n");
 		}
 		else
-			return std::pair<int, int>(0, 50*(trickCount-lastBid.level)); // lost contract
+			return std::pair<int, int>(0, -50*(trickCount-lastBid.level)); // lost contract
 	}
 	else {
 		// They won the bidding
@@ -205,7 +201,7 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 				throw std::out_of_range("error\n");
 		}
 		else
-			return std::pair<int, int>(0, -50*(trickCount-lastBid.level)); // lost contract
+			return std::pair<int, int>(0, 50*(trickCount-lastBid.level)); // lost contract
 	}
 	return std::pair<int, int>(-1, -1);
 }
