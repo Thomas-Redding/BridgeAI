@@ -118,12 +118,17 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		Trick &trick = history.tricks[history.tricks.size()-1];
 		trick.leader = leader;
 		
+		if(printTricks)
+			std::cout << leader << ": ";
+		
 		// ask for a lead
 		Card card = players[leader]->play();
 		int cardIndex = getIndexOfCard(card, leader, redoAndFlip);
 		if(cardIndex == -1)
 			throw std::out_of_range("player lead a card not in their hand\n");
 		trick.cards[0] = card;
+		if(printTricks)
+			std::cout << card;
 		deck[cardIndex].suit = naught;
 		deck[cardIndex].value = 0;
 		
@@ -141,10 +146,15 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 					throw std::out_of_range("player did not follow suit\n");
 				}
 			}
+			if(printTricks)
+				std::cout << ", " << card;
 			trick.cards[j] = card;
 			deck[cardIndex].suit = naught;
 			deck[cardIndex].value = 0;
 		}
+		
+		if(printTricks)
+			std::cout << "\n";
 		
 		// determine who won - todo
 		int winner = 0;
@@ -187,12 +197,13 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 				throw std::out_of_range("error\n");
 		}
 		else
-			return std::pair<int, int>(0, -50*(trickCount-lastBid.level)); // lost contract
+			return std::pair<int, int>(0, 50*(trickCount-bidLevel)); // lost contract
 	}
 	else {
 		// They won the bidding
 		// We won the bidding
-		if(trickCount >= lastBid.level) {
+		trickCount = 13 - trickCount;
+		if(trickCount >= bidLevel) {
 			// made contract
 			if(lastBid.suit == club || lastBid.suit == diamond)
 				return std::pair<int, int>(-20*lastBid.level, -20*(trickCount-bidLevel));
@@ -204,7 +215,7 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 				throw std::out_of_range("error\n");
 		}
 		else
-			return std::pair<int, int>(0, 50*(trickCount-lastBid.level)); // lost contract
+			return std::pair<int, int>(0, -50*(trickCount-bidLevel)); // lost contract
 	}
 	return std::pair<int, int>(-1, -1);
 }
