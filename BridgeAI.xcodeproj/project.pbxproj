@@ -11,6 +11,7 @@
 		28E9E2971C3060C900BC495A /* Moderator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E9E2951C3060C900BC495A /* Moderator.cpp */; };
 		28E9E29A1C30975600BC495A /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E9E2981C30975600BC495A /* Player.cpp */; };
 		28E9E29D1C3097A500BC495A /* History.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E9E29B1C3097A500BC495A /* History.cpp */; };
+		EC1A395D1C31B56600628103 /* BasicPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1A395B1C31B56600628103 /* BasicPlayer.cpp */; };
 		EC41B4C51C3061F600028691 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC41B4C31C3061F600028691 /* Hand.cpp */; };
 		EC41B4C81C309EB500028691 /* RandomPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC41B4C61C309EB500028691 /* RandomPlayer.cpp */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,8 @@
 		28E9E29B1C3097A500BC495A /* History.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = History.cpp; sourceTree = "<group>"; };
 		28E9E29C1C3097A500BC495A /* History.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = History.hpp; sourceTree = "<group>"; };
 		28E9E29F1C30995500BC495A /* heu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heu.hpp; sourceTree = "<group>"; };
+		EC1A395B1C31B56600628103 /* BasicPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayer.cpp; sourceTree = "<group>"; };
+		EC1A395C1C31B56600628103 /* BasicPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BasicPlayer.hpp; sourceTree = "<group>"; };
 		EC41B4C31C3061F600028691 /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
 		EC41B4C41C3061F600028691 /* Hand.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Hand.hpp; sourceTree = "<group>"; };
 		EC41B4C61C309EB500028691 /* RandomPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomPlayer.cpp; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 				28E9E2991C30975600BC495A /* Player.hpp */,
 				EC41B4C61C309EB500028691 /* RandomPlayer.cpp */,
 				EC41B4C71C309EB500028691 /* RandomPlayer.hpp */,
+				EC1A395B1C31B56600628103 /* BasicPlayer.cpp */,
+				EC1A395C1C31B56600628103 /* BasicPlayer.hpp */,
 				28E9E29F1C30995500BC495A /* heu.hpp */,
 				28E9E2931C305FD800BC495A /* Card.hpp */,
 				EC41B4C41C3061F600028691 /* Hand.hpp */,
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E9E29A1C30975600BC495A /* Player.cpp in Sources */,
+				EC1A395D1C31B56600628103 /* BasicPlayer.cpp in Sources */,
 				EC41B4C81C309EB500028691 /* RandomPlayer.cpp in Sources */,
 				EC41B4C51C3061F600028691 /* Hand.cpp in Sources */,
 				28E9E29D1C3097A500BC495A /* History.cpp in Sources */,
