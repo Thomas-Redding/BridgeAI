@@ -22,9 +22,9 @@ int main(int argc, const char * argv[]) {
 	RandomPlayer p3 = RandomPlayer(&history);
 	RandomPlayer p4 = RandomPlayer(&history);
 	Moderator mod = Moderator(&p1, &p2, &p3, &p4, history);
-    int result = mod.play();
+	std::pair<int, int> result = mod.play();
     
-    std::cout << "Result: " << result << std::endl;
+    std::cout << "Result: " << result.first << ", " << result.second << std::endl;
 	
     return 0;
 }
