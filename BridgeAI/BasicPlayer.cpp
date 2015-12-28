@@ -9,8 +9,33 @@
 #include "BasicPlayer.hpp"
 
 Bid BasicPlayer::bid() {
-	if (history->bids.size() == 0) {
-		return Bid(club, 1);
+	const std::vector<Bid> &bids = history->bids;
+	if (bids.size() < 4) {
+		// first round of bidding
+		for (int i=0; i<bids.size(); i++) {
+			if (bids[i].suit != naught) {
+				return Bid(naught, 0);
+			}
+		}
+		// no one has bid
+		if (computeHcp() >= 13) {
+			unsigned long clubs = hand->cards[0].size();
+			unsigned long diamonds = hand->cards[1].size();
+			unsigned long hearts = hand->cards[2].size();
+			unsigned long spades = hand->cards[3].size();
+			if (clubs > diamonds && clubs > hearts && clubs > spades) {
+				return Bid(club, 1);
+			}
+			else if (diamonds > hearts && diamonds > spades) {
+				return Bid(diamond, 1);
+			}
+			else if (hearts > spades) {
+				return Bid(heart, 1);
+			}
+			else {
+				return Bid(spade, 1);
+			}
+		}
 	}
     return Bid(naught, 0);
 }
@@ -63,4 +88,27 @@ Card BasicPlayer::play() {
     throw std::runtime_error("Could not find a card");
     
     return Card(naught, 0);
+}
+
+int BasicPlayer::computeHcp() {
+	if(cachedHcp == -1) {
+		cachedHcp = 0;
+		for (int i=0; i<4; i++) {
+			for (int j=0; j<hand->cards[i].size(); j++) {
+				if (hand->cards[i][j].value == 12) {
+					cachedHcp += 4;
+				}
+				else if (hand->cards[i][j].value == 11) {
+					cachedHcp += 3;
+				}
+				else if (hand->cards[i][j].value == 11) {
+					cachedHcp += 2;
+				}
+				else if (hand->cards[i][j].value == 11) {
+					cachedHcp++;
+				}
+			}
+		}
+	}
+	return cachedHcp;
 }

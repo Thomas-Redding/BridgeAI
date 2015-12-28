@@ -18,6 +18,9 @@ public:
     BasicPlayer(History *history) : Player(history) {};
     Bid bid();
     Card play();
+private:
+	int computeHcp();
+	int cachedHcp = -1;
 };
 
 #endif /* BasicPlayer_hpp */
