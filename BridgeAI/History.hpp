@@ -21,7 +21,6 @@ struct Bid {
 struct Trick {
 	int leader;
 	Card cards[4];
-    bool isEmpty() const;
 };
 
 class History {
@@ -29,6 +28,7 @@ public:
 	int dealer;
 	std::vector<Bid> bids;
 	std::vector<Trick> tricks;
+    bool isTrickEmpty() const;
 };
 
 #endif /* History_hpp */

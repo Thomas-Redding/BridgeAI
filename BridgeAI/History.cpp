@@ -8,6 +8,6 @@
 
 #include "History.hpp"
 
-bool Trick::isEmpty() const {
-    return cards[0].suit == naught;
+bool History::isTrickEmpty() const {
+    return tricks.back().cards[0].suit == naught;
 }

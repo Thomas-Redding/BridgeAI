@@ -17,7 +17,7 @@ Bid RandomPlayer::bid() {
 
 Card RandomPlayer::play() {
     
-    if (history->tricks.back().isEmpty()) {
+    if (history->isTrickEmpty()) {
         // play first card
         Card c = (*hand)[0];
         if (!hand->play(0)) {
