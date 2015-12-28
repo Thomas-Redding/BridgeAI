@@ -7,6 +7,7 @@
 //
 
 #include "BasicPlayer.hpp"
+#include <limits>
 
 Bid BasicPlayer::bid() {
 	const std::vector<Bid> &bids = history->bids;
@@ -71,11 +72,25 @@ Card BasicPlayer::play() {
         a[b[i].first.toIndex()].second += b[i].second;
     }
     
-    // find "best" card in my hand
+    // find "best" card in my hand that is ALSO legal
+    
+    Suit suit = history->tricks.back().cards[0].suit;
+    if (suit != naught) { // if suit == naught then I am leading and I don't need to make sure I follow suit
+        if(hand->cards[int(suit)].size() != 0) {
+            for (int i = 0; i < a.size(); i++) {
+                if (a[i].first.suit != suit) {
+                    a[i].second = std::numeric_limits<double>::lowest();
+                }
+            }
+        }
+    }
     std::sort(a.begin(), a.end(), []( const std::pair<Card, double>& a, const std::pair<Card, double>& b) {
         return a.second > b.second;
     });
     for (int i = 0; i < a.size(); i++) {
+        if (a[i].second == std::numeric_limits<double>::lowest()) {
+            throw std::runtime_error("I really really REALLY don't want to play this card");
+        }
         int s = int(a[i].first.suit);
         size_t j = find(hand->cards[s], a[i].first);
         if (j < hand->cards[s].size()) {
