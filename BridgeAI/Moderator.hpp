@@ -22,8 +22,8 @@ public:
     
 private:
     Card deck[52];
-    Player* players[4];
-    History history;
+    Player *players[4];
+    History &history;
 	
 	void shuffle();
 	int getIndexOfCard(Card &card, int player);

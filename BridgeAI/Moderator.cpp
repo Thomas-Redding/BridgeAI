@@ -8,7 +8,7 @@
 
 #include "Moderator.hpp"
 
-Moderator::Moderator(Player* A, Player* B, Player* C, Player* D) {
+Moderator::Moderator(Player* A, Player* B, Player* C, Player* D, History &hist) : history(hist) {
     players[0] = A;
     players[1] = B;
     players[2] = C;
@@ -16,8 +16,6 @@ Moderator::Moderator(Player* A, Player* B, Player* C, Player* D) {
 }
 
 int Moderator::play() {
-	
-	history = History();
 	
     // deal cards
     shuffle();

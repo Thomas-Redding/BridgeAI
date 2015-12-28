@@ -13,6 +13,8 @@
 #include "Player.hpp"
 
 class RandomPlayer : public Player {
+public:
+	RandomPlayer(History *history) : Player(history) {};
     Bid bid();
     Card play();
 };
