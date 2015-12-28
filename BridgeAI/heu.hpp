@@ -41,16 +41,26 @@ namespace heu {
         return rtn;
     }
     
+    bool better(const Card& old, const Card& c, Suit trump) {
+        if (old.suit == trump) {
+            return c.suit == trump && c.value > old.value;
+        }
+        return c.suit == trump || (c.suit == old.suit && c.value > old.value);
+    }
+    
     // fourth hand high
     Heu_return mayTheFourthBeWithYou(const History& history, const Player& player) {
         Heu_return rtn;
         if (history.tricks.back().howManyCardsSoFar() != 3) {
             return rtn;
         }
-        Suit s = history.tricks.back().cards[0].suit;
+        
+        Card currentlyWinning = history.tricks.back().winning(history.trump);
+        
         for (int i = 0; i < numberOfCardsInDeck; i++) {
-            if (i % 13 > 8) {
-                rtn.push_back(std::pair<Card, double>(Card(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit), double(i - 9) / 3));
+            Card c(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit);
+            if (better(currentlyWinning, c, history.trump)) {
+                rtn.push_back(std::pair<Card, double>(c, 1.0));
             }
         }
         return rtn;
@@ -61,9 +71,13 @@ namespace heu {
         if (history.tricks.back().howManyCardsSoFar() != 2) {
             return rtn;
         }
+        
+        Card currentlyWinning = history.tricks.back().winning(history.trump);
+        
         for (int i = 0; i < numberOfCardsInDeck; i++) {
-            if (i % 13 > 8) {
-                rtn.push_back(std::pair<Card, double>(Card(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit), double(i - 9) / 3));
+            Card c(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit);
+            if (better(currentlyWinning, c, history.trump)) {
+                rtn.push_back(std::pair<Card, double>(c, 1.0));
             }
         }
         return rtn;
