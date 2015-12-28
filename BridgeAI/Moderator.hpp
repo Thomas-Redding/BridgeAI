@@ -17,13 +17,13 @@
 
 class Moderator {
 public:
-    Moderator(Player* A, Player* B, Player* C, Player* D);
+    Moderator(Player* A, Player* B, Player* C, Player* D, History &hist);
     int play(); // TODO: play a game, return the points
     
 private:
     Card deck[52];
-    Player* players[4];
-    History history;
+    Player *players[4];
+    History &history;
 	
 	void shuffle();
 	int getIndexOfCard(Card &card, int player);
