@@ -28,6 +28,7 @@ public:
 	int dealer;
 	std::vector<Bid> bids;
 	std::vector<Trick> tricks;
+    bool isTrickEmpty() const;
 };
 
 #endif /* History_hpp */

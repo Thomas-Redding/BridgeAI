@@ -10,17 +10,21 @@
 #include "heu.hpp"
 #include "RandomPlayer.hpp"
 #include "Moderator.hpp"
+#include <time.h>
 
 int main(int argc, const char * argv[]) {
-	// insert code here...
-	History history;
+
+    srand(int(time(NULL)));
+    
+    History history;
 	RandomPlayer p1 = RandomPlayer(&history);
 	RandomPlayer p2 = RandomPlayer(&history);
 	RandomPlayer p3 = RandomPlayer(&history);
 	RandomPlayer p4 = RandomPlayer(&history);
 	Moderator mod = Moderator(&p1, &p2, &p3, &p4, history);
-	mod.play();
+    int result = mod.play();
+    
+    std::cout << "Result: " << result << std::endl;
 	
-	std::cout << "Hello, World!\n";
     return 0;
 }
