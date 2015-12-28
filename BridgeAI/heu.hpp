@@ -19,7 +19,7 @@ namespace heu {
 	// Tend to play the highest or lowest card in a suit
     Heu_return playExtremes(const History& history, const Hand& hand) {
 		Heu_return rtn;
-		for (int i = 0; i < hand.numberOfSuits; i++) {
+		for (int i = 0; i < numberOfSuits; i++) {
 			if(hand.cards[i].size() >= 2) {
 				rtn.first.push_back(hand.cards[i][0]);
 				rtn.second.push_back(1);
@@ -37,7 +37,7 @@ namespace heu {
             return rtn;
         }
         Suit suit = history.tricks.back().cards[0].suit;
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < numberOfCardsPerSuit; i++) {
             rtn.first.push_back(Card(suit, i));
             rtn.second.push_back(1.0);
         }
