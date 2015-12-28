@@ -109,7 +109,7 @@ int Moderator::play() {
 				winner = j;
 			}
 		}
-		leader = (j+leader)%4
+		leader = (winner+leader)%4;
 		if(leader < 0)
 			leader += 4;
 	}
