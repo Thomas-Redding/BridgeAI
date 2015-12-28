@@ -10,10 +10,31 @@
 #include "RandomPlayer.hpp"
 #include "Moderator.hpp"
 #include <time.h>
+#include <cmath>
+
+double mean(std::vector<int> &vect) {
+	double rtn = 0;
+	for (int i=0; i<vect.size(); i++) {
+		rtn += vect[i];
+	}
+	return rtn/vect.size();
+}
+
+double stdev(std::vector<int> &vect) {
+	double avg = mean(vect);
+	double rtn = 0;
+	for (int i=0; i<vect.size(); i++) {
+		rtn += (vect[i] - avg) * (vect[i] - avg);
+	}
+	return sqrt(rtn/vect.size());
+}
 
 int main(int argc, const char * argv[]) {
 	srand(int(time(NULL)));
-	for (int i=0; i<100; i++) {
+	std::vector<int> belowLine;
+	std::vector<int> aboveLine;
+	int n = 1000;
+	for (int i=0; i<n; i++) {
 		History history;
 		RandomPlayer p1 = RandomPlayer(&history);
 		RandomPlayer p2 = RandomPlayer(&history);
@@ -22,7 +43,10 @@ int main(int argc, const char * argv[]) {
 		Moderator mod = Moderator(&p1, &p2, &p3, &p4, history);
 		std::pair<int, int> result1 = mod.play(false);
 		std::pair<int, int> result2 = mod.play(true);
-		std::cout << (result1.first + result2.first) << " | " << (result1.second + result2.second) << "\n";
+		belowLine.push_back(result1.first + result2.first);
+		aboveLine.push_back(result1.second + result2.second);
 	}
+	std::cout << mean(belowLine) << " ± " << stdev(belowLine) << "\n";
+	std::cout << mean(aboveLine) << " ± " << stdev(aboveLine) << "\n";
     return 0;
 }

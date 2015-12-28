@@ -9,7 +9,9 @@
 #include "BasicPlayer.hpp"
 
 Bid BasicPlayer::bid() {
-    // TODO
+	if (history->bids.size() == 0) {
+		return Bid(club, 1);
+	}
     return Bid(naught, 0);
 }
 
