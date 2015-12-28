@@ -13,7 +13,7 @@ Hand::Hand(const Card* dealt) {
     for (int i = 0; i < handSize; i++) {
         cards[int(dealt[i].suit)].push_back(dealt[i]);
     }
-    for (int i = 0; i < handSize; i++) {
+    for (int i = 0; i < numberOfSuits; i++) {
         std::sort(cards[i].begin(), cards[i].end(), [](Card a, Card b) { return a.value < b.value; });
     }
 }
