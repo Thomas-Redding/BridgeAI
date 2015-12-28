@@ -18,7 +18,7 @@ Bid BasicPlayer::bid() {
 			}
 		}
 		// no one has bid
-		if (computeHcp() >= 13) {
+		if (computeHcp() >= 12) {
 			unsigned long clubs = hand->cards[0].size();
 			unsigned long diamonds = hand->cards[1].size();
 			unsigned long hearts = hand->cards[2].size();
@@ -60,7 +60,6 @@ Card BasicPlayer::play() {
     }
 
 	std::vector<std::pair<Card, double>> b;
-    /*
     b = heu::playExtremes(*history, *this);
     for (int i = 0; i < b.size(); i++) {
         a[b[i].first.toIndex()].second += b[i].second;
@@ -70,7 +69,16 @@ Card BasicPlayer::play() {
     for (int i = 0; i < b.size(); i++) {
         a[b[i].first.toIndex()].second += b[i].second;
     }
-	*/
+	
+	b = heu::mayTheFourthBeWithYou(*history, *this);
+	for (int i = 0; i < b.size(); i++) {
+		a[b[i].first.toIndex()].second += b[i].second;
+	}
+	
+	b = heu::mayTheThirdBeWithYou(*history, *this);
+	for (int i = 0; i < b.size(); i++) {
+		a[b[i].first.toIndex()].second += b[i].second;
+	}
 	
     // find "best" card in my hand that is ALSO legal
     

@@ -34,12 +34,12 @@ int main(int argc, const char * argv[]) {
 	srand(int(time(NULL)));
 	std::vector<int> belowLine;
 	std::vector<int> aboveLine;
-	int n = 1000;
+	int n = 10000;
 	for (int i=0; i<n; i++) {
 		History history;
-		RandomPlayer p1 = RandomPlayer(&history);
+		BasicPlayer p1 = BasicPlayer(&history);
 		RandomPlayer p2 = RandomPlayer(&history);
-		RandomPlayer p3 = RandomPlayer(&history);
+		BasicPlayer p3 = BasicPlayer(&history);
 		RandomPlayer p4 = RandomPlayer(&history);
 		Moderator mod = Moderator(&p1, &p2, &p3, &p4, history);
 		std::pair<int, int> result1 = mod.play(false);
