@@ -36,11 +36,11 @@ int Moderator::play() {
 				break;
 			Bid bid = players[i]->bid();
 			if (bid.level == 0 && bid.suit == naught) {
-				passCount = 0;
+				passCount++;
 				history.bids.push_back(bid);
 			}
 			else if ((bid.level == currentBid.level && bid.suit > currentBid.suit) || bid.level > currentBid.level) {
-				passCount++;
+				passCount = 0;
 				history.bids.push_back(bid);
 				lastBidPerson = i;
 			}

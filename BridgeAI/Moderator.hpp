@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <vector>
 #include <stdexcept>
+#include <iostream>
 #include "Card.hpp"
 #include "Player.hpp"
 
