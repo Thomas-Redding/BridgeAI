@@ -10,10 +10,13 @@
 #include "heu.hpp"
 #include "RandomPlayer.hpp"
 #include "Moderator.hpp"
+#include <time.h>
 
 int main(int argc, const char * argv[]) {
-	// insert code here...
-	History history;
+
+    srand(int(time(NULL)));
+    
+    History history;
 	RandomPlayer p1 = RandomPlayer(&history);
 	RandomPlayer p2 = RandomPlayer(&history);
 	RandomPlayer p3 = RandomPlayer(&history);
