@@ -101,8 +101,17 @@ int Moderator::play() {
 		}
 		
 		// determine who won - todo
-		
-		
+		int winner = 0;
+		int highest = trick.cards[0].value;
+		for(int j=1; j<4; j++) {
+			if(trick.cards[j].suit == trick.cards[0].suit && trick.cards[j].value > highest) {
+				highest = trick.cards[j].value;
+				winner = j;
+			}
+		}
+		leader = (j+leader)%4
+		if(leader < 0)
+			leader += 4;
 	}
 	
     return 0;
