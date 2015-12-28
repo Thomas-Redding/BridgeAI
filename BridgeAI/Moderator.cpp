@@ -222,7 +222,7 @@ void Moderator::shuffle() {
 	std::vector<Card> sortedDeck;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 13; j++) {
-			sortedDeck.push_back(Card(i, j));
+			sortedDeck.push_back(Card(Suit(i), j));
 		}
 	}
 	for (int i = 0; i < 52; i++) {
