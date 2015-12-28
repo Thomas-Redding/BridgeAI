@@ -37,6 +37,10 @@ public:
 	}
 	Suit suit;
 	int value;
+	
+	bool operator==(const Card &other) const {
+		return suit == other.suit && value == other.value;
+	}
 };
 
 #endif /* Card_hpp */
