@@ -15,7 +15,7 @@ Moderator::Moderator(Player* A, Player* B, Player* C, Player* D, History &hist) 
     players[3] = D;
 }
 
-int Moderator::play() {
+std::pair<int, int> Moderator::play() {
 	
     // deal cards
     shuffle();
@@ -51,9 +51,10 @@ int Moderator::play() {
 	
 	// find dummy
 	int dummy;
+	Bid &lastBid = history.bids[history.bids.size()-1];
 	for (int i = 0; i < history.bids.size(); i++) {
 		if (i % 2 == lastBidPerson%2) {
-			if(history.bids[i].suit == history.bids[history.bids.size()-1].suit) {
+			if(history.bids[i].suit == lastBid.suit) {
 				dummy = i % 4;
 				break;
 			}
@@ -63,6 +64,7 @@ int Moderator::play() {
 	int leader = (dummy - 1) % 4;
 	if(leader < 0)
 		leader += 4;
+	int trickCount = 0;
 	
 	for (int i = 0; i < 13; i++) {
 		// set up trick
@@ -104,17 +106,59 @@ int Moderator::play() {
 		int winner = 0;
 		int highest = trick.cards[0].value;
 		for(int j = 1; j < 4; j++) {
-			if(trick.cards[j].suit == trick.cards[0].suit && trick.cards[j].value > highest) {
-				highest = trick.cards[j].value;
-				winner = j;
+			if(trick.cards[0].suit != trick.cards[0].suit && trick.cards[0].suit == lastBid.suit) {
+				// trump
+				if(trick.cards[0].value + 100 > highest) {
+					highest = trick.cards[0].value + 100;
+					winner =  j;
+				}
+			}
+			else {
+				if(trick.cards[j].suit == trick.cards[0].suit && trick.cards[j].value > highest) {
+					highest = trick.cards[j].value;
+					winner = j;
+				}
 			}
 		}
 		leader = (winner+leader)%4;
+		if(leader%2 == 0)
+			trickCount++;
 		if(leader < 0)
 			leader += 4;
 	}
 	
-    return 0;
+	// score game
+	if(dummy%2 == 0) {
+		// We won the bidding
+		if(trickCount >= lastBid.level) {
+			// made contract
+			if(lastBid.suit == club || lastBid.suit == diamond)
+				return std::pair<int, int>(20*lastBid.level, 20*(trickCount-lastBid.level));
+			else if(lastBid.suit == heart || lastBid.suit == spade)
+				return std::pair<int, int>(30*lastBid.level, 30*(trickCount-lastBid.level));
+			else
+				return std::pair<int, int>(10+30*lastBid.level, 30*(trickCount-lastBid.level));
+		}
+		else
+			return std::pair<int, int>(0, 50*(trickCount-lastBid.level)); // lost contract
+	}
+	else {
+		// They won the bidding
+		// We won the bidding
+		if(trickCount >= lastBid.level) {
+			// made contract
+			if(lastBid.suit == club || lastBid.suit == diamond)
+				return std::pair<int, int>(-20*lastBid.level, -20*(trickCount-lastBid.level));
+			else if(lastBid.suit == heart || lastBid.suit == spade)
+				return std::pair<int, int>(-30*lastBid.level, -30*(trickCount-lastBid.level));
+			else
+				return std::pair<int, int>(-10-30*lastBid.level, -30*(trickCount-lastBid.level));
+		}
+		else
+			return std::pair<int, int>(0, -50*(trickCount-lastBid.level)); // lost contract
+	}
+	
+	
 }
 
 int Moderator::getIndexOfCard(Card &card, int player) {
