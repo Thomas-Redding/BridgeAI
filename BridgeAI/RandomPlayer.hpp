@@ -13,8 +13,8 @@
 #include "Player.hpp"
 
 class RandomPlayer : public Player {
-    virtual Bid bid();
-    virtual Card play();
+    Bid bid();
+    Card play();
 };
 
 #endif /* RandomPlayer_hpp */
