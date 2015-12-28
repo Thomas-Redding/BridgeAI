@@ -18,7 +18,7 @@
 class Moderator {
 public:
     Moderator(Player* A, Player* B, Player* C, Player* D);
-    int play(); // TODO: play a game, return the points
+    int play();
     
 private:
     Card deck[52];
