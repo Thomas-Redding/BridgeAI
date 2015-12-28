@@ -29,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		289081041C31E844001A167C /* heu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heu.hpp; sourceTree = "<group>"; };
 		28A24F791C305F0900A664BE /* BridgeAI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BridgeAI; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A24F7C1C305F0900A664BE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		28E9E2931C305FD800BC495A /* Card.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		28E9E2991C30975600BC495A /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		28E9E29B1C3097A500BC495A /* History.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = History.cpp; sourceTree = "<group>"; };
 		28E9E29C1C3097A500BC495A /* History.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = History.hpp; sourceTree = "<group>"; };
-		28E9E29F1C30995500BC495A /* heu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heu.hpp; sourceTree = "<group>"; };
 		EC1A395B1C31B56600628103 /* BasicPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayer.cpp; sourceTree = "<group>"; };
 		EC1A395C1C31B56600628103 /* BasicPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BasicPlayer.hpp; sourceTree = "<group>"; };
 		EC41B4C31C3061F600028691 /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 				EC41B4C71C309EB500028691 /* RandomPlayer.hpp */,
 				EC1A395B1C31B56600628103 /* BasicPlayer.cpp */,
 				EC1A395C1C31B56600628103 /* BasicPlayer.hpp */,
-				28E9E29F1C30995500BC495A /* heu.hpp */,
 				28E9E2931C305FD800BC495A /* Card.hpp */,
+				289081041C31E844001A167C /* heu.hpp */,
 				EC41B4C41C3061F600028691 /* Hand.hpp */,
 				EC41B4C31C3061F600028691 /* Hand.cpp */,
 				28E9E29B1C3097A500BC495A /* History.cpp */,

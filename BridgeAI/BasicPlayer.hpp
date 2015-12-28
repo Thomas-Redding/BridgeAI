@@ -10,6 +10,8 @@
 #define BasicPlayer_hpp
 
 #include <stdio.h>
+#include <limits>
+
 #include "Player.hpp"
 #include "heu.hpp"
 

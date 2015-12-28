@@ -7,7 +7,6 @@
 //
 
 #include "BasicPlayer.hpp"
-#include <limits>
 
 Bid BasicPlayer::bid() {
 	const std::vector<Bid> &bids = history->bids;
@@ -52,14 +51,14 @@ size_t find(const std::vector<F>& A, const F& x) {
 }
 
 Card BasicPlayer::play() {
-    
+	
     Heu_return a;
     a.resize(numberOfCardsInDeck);
     for (int i = 0; i < numberOfCardsInDeck; i++) {
         a[i].first = Card(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit);
         a[i].second = 0.0;
     }
-    
+	
     Heu_return b;
     
     b = heu::playExtremes(*history, *this);
