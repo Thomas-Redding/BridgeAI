@@ -28,6 +28,7 @@ private:
 	
 	void shuffle();
 	int getIndexOfCard(Card &card, int player);
+	int hasVoidInSuit(Suit suit, int player);
 };
 
 #endif /* Moderator_hpp */

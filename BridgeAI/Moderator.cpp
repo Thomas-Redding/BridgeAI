@@ -90,8 +90,11 @@ int Moderator::play() {
 			cardIndex = getIndexOfCard(card, k);
 			if(cardIndex == -1)
 				throw std::out_of_range("player played a card not in their hand\n");
-			if(card.suit != trick.cards[0].suit)
-				throw std::out_of_range("player did not follow suit\n");
+			if(card.suit != trick.cards[0].suit) {
+				if(!hasVoidInSuit(trick.cards[0].suit, k)) {
+					throw std::out_of_range("player did not follow suit\n");
+				}
+			}
 			trick.cards[j] = card;
 			deck[cardIndex].suit = naught;
 			deck[cardIndex].value = 0;
@@ -136,4 +139,12 @@ void Moderator::shuffle() {
 		deck[i] = sortedDeck[r];
 		sortedDeck.erase(sortedDeck.begin()+r);
 	}
+}
+
+int Moderator::hasVoidInSuit(Suit suit, int player) {
+	for (int i = 0; i < 13; i++) {
+		if(deck[13 * player + i].suit == suit)
+			return false;
+	}
+	return true;
 }
