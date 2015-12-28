@@ -7,10 +7,11 @@
 //
 
 #include <iostream>
-#include "RandomPlayer.hpp"
-#include "Moderator.hpp"
 #include <time.h>
 #include <cmath>
+
+#include "RandomPlayer.hpp"
+#include "Moderator.hpp"
 
 double mean(std::vector<int> &vect) {
 	double rtn = 0;
