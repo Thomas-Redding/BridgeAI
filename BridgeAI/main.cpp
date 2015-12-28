@@ -7,10 +7,11 @@
 //
 
 #include <iostream>
-#include "RandomPlayer.hpp"
-#include "Moderator.hpp"
 #include <time.h>
 #include <cmath>
+
+#include "RandomPlayer.hpp"
+#include "Moderator.hpp"
 
 double mean(std::vector<int> &vect) {
 	double rtn = 0;
@@ -26,7 +27,7 @@ double stdev(std::vector<int> &vect) {
 	for (int i=0; i<vect.size(); i++) {
 		rtn += (vect[i] - avg) * (vect[i] - avg);
 	}
-	return sqrt(rtn/vect.size());
+	return sqrt(rtn/(vect.size()-1));
 }
 
 int main(int argc, const char * argv[]) {
@@ -46,7 +47,7 @@ int main(int argc, const char * argv[]) {
 		belowLine.push_back(result1.first + result2.first);
 		aboveLine.push_back(result1.second + result2.second);
 	}
-	std::cout << mean(belowLine) << " ± " << stdev(belowLine) << "\n";
-	std::cout << mean(aboveLine) << " ± " << stdev(aboveLine) << "\n";
+	std::cout << mean(belowLine) << " ± " << stdev(belowLine)/sqrt(n) << "\n";
+	std::cout << mean(aboveLine) << " ± " << stdev(aboveLine)/sqrt(n) << "\n";
     return 0;
 }
