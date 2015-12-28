@@ -27,6 +27,7 @@ private:
     Player *players[4];
     History &history;
 	History originalHistory;
+	bool printTricks = false;
 	
 	void shuffle();
 	int getIndexOfCard(Card &card, int player, bool redoAndFlip);

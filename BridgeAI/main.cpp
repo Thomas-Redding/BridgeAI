@@ -12,19 +12,17 @@
 #include <time.h>
 
 int main(int argc, const char * argv[]) {
-
 	srand(int(time(NULL)));
-	
-    History history;
-	RandomPlayer p1 = RandomPlayer(&history);
-	RandomPlayer p2 = RandomPlayer(&history);
-	RandomPlayer p3 = RandomPlayer(&history);
-	RandomPlayer p4 = RandomPlayer(&history);
-	Moderator mod = Moderator(&p1, &p2, &p3, &p4, history);
-	std::pair<int, int> result = mod.play(false);
-    std::cout << "Result A: " << result.first << ", " << result.second << std::endl;
-	result = mod.play(true);
-	std::cout << "Result B: " << result.first << ", " << result.second << std::endl;
-	
+	for (int i=0; i<100; i++) {
+		History history;
+		RandomPlayer p1 = RandomPlayer(&history);
+		RandomPlayer p2 = RandomPlayer(&history);
+		RandomPlayer p3 = RandomPlayer(&history);
+		RandomPlayer p4 = RandomPlayer(&history);
+		Moderator mod = Moderator(&p1, &p2, &p3, &p4, history);
+		std::pair<int, int> result1 = mod.play(false);
+		std::pair<int, int> result2 = mod.play(true);
+		std::cout << (result1.first + result2.first) << " | " << (result1.second + result2.second) << "\n";
+	}
     return 0;
 }
