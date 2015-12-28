@@ -21,6 +21,12 @@ public:
     const size_t handSize = 13;
     static const size_t numberOfSuits = 4;
     std::vector<Card> cards[numberOfSuits];
+    
+    bool play(size_t i);
+    bool play(Card c);
+    
+    const Card& operator[](size_t i) const;
+    size_t length() const;
 };
 
 #endif /* Hand_hpp */

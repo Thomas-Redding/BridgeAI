@@ -16,5 +16,9 @@ Bid RandomPlayer::bid() {
 }
 
 Card RandomPlayer::play() {
-    return Card(null, 0);
+    Card c = (*hand)[0];
+    if (!hand->play(0)) {
+        throw std::runtime_error("Something went wrong");
+    }
+    return c;
 }
