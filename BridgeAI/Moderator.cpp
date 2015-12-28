@@ -70,6 +70,8 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 	if(lastBid.suit == naught && lastBid.level == 0)
 		return std::pair<int, int>(0, 0); // all passes
 	
+	history.trump = lastBid.suit;
+	
 	// find dummy
 	int dummyPlayer;
 	for (int i = 0; i < history.bids.size(); i++) {

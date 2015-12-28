@@ -25,6 +25,7 @@ struct Trick {
 
 class History {
 public:
+	Suit trump = naught;
 	int dealer;
 	std::vector<Bid> bids;
 	std::vector<Trick> tricks;
