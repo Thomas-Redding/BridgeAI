@@ -105,7 +105,7 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		players[2]->setPosition(dummy, nullptr, players[4]->hand);
 		players[3]->setPosition(right_of_dummy, players[2]->hand, nullptr);
 		players[0]->setPosition(offense, players[2]->hand, nullptr);
-		players[1]->setPosition(left_of_dummy, &players[2]->hand, nullptr);
+		players[1]->setPosition(left_of_dummy, players[2]->hand, nullptr);
 	}
 	else if (dummyPlayer == 3) {
 		players[3]->setPosition(dummy, nullptr, players[1]->hand);
