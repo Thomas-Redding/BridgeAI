@@ -47,6 +47,7 @@ namespace heu {
         if (history.tricks.back().howManyCardsSoFar() != 3) {
             return rtn;
         }
+        Suit s = history.tricks.back().cards[0].suit;
         for (int i = 0; i < numberOfCardsInDeck; i++) {
             if (i % 13 > 8) {
                 rtn.push_back(std::pair<Card, double>(Card(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit), double(i - 9) / 3));

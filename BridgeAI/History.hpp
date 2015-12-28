@@ -22,6 +22,7 @@ struct Trick {
 	int leader;
 	Card cards[numberOfSuits];
     int howManyCardsSoFar() const;
+    Card winning(Suit trump) const;
 };
 
 class History {

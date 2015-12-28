@@ -16,6 +16,31 @@ int Trick::howManyCardsSoFar() const {
     return count;
 }
 
+Card Trick::winning(Suit trump) const {
+    Card rtn = cards[0];
+    Suit suit = cards[0].suit;
+    
+    for (int i = 1; i < 3; i++) {
+        if (cards[i].suit == naught) {
+            return rtn;
+        }
+        if (cards[i].suit != suit && cards[i].suit != trump) {
+            continue;
+        }
+        if (rtn.suit == trump) {
+            if (cards[i].suit == trump && cards[i].value > rtn.value) {
+                rtn = cards[i];
+            }
+        }
+        else {
+            if (cards[i].suit == trump || (cards[i].suit == suit && cards[i].value > rtn.value)) {
+                rtn = cards[i];
+            }
+        }
+    }
+    return rtn;
+}
+
 bool History::isTrickEmpty() const {
     return tricks.back().cards[0].suit == naught;
 }
