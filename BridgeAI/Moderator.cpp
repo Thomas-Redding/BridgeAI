@@ -13,6 +13,7 @@ Moderator::Moderator(Player* A, Player* B, Player* C, Player* D, History &hist) 
     players[1] = B;
     players[2] = C;
     players[3] = D;
+	originalHistory = hist;
 }
 
 std::pair<int, int> Moderator::play(bool redoAndFlip) {
@@ -25,6 +26,8 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		players[1]->deal(2, &deck[26], &history);
 		players[2]->deal(3, &deck[39], &history);
 		players[3]->deal(0, &deck[0], &history);
+		history = originalHistory;
+		history.dealer = 3;
 	}
 	else {
 		shuffle();
@@ -32,6 +35,7 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		players[1]->deal(1, &deck[13], &history);
 		players[2]->deal(2, &deck[26], &history);
 		players[3]->deal(3, &deck[39], &history);
+		history.dealer = 0;
 	}
 	
 	
@@ -46,7 +50,8 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		for (int i = 0; i < 4; i++) {
 			if(passCount >= 4)
 				break;
-			Bid bid = players[i]->bid();
+			int k = (i + history.dealer)%4;
+			Bid bid = players[k]->bid();
 			if (bid.level == 0 && bid.suit == naught) {
 				passCount++;
 				history.bids.push_back(bid);
@@ -54,7 +59,7 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 			else if ((bid.level == currentBid.level && bid.suit > currentBid.suit) || bid.level > currentBid.level) {
 				passCount = 0;
 				history.bids.push_back(bid);
-				lastBidPerson = i;
+				lastBidPerson = k;
 				lastBid = bid;
 			}
 			else
@@ -68,9 +73,9 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 	// find dummy
 	int dummyPlayer;
 	for (int i = 0; i < history.bids.size(); i++) {
-		if (i % 2 == lastBidPerson%2) {
+		if ((i + history.dealer) % 2 == lastBidPerson%2) {
 			if(history.bids[i].suit == lastBid.suit) {
-				dummyPlayer = i % 4;
+				dummyPlayer = (i + history.dealer + 2) % 4;
 				break;
 			}
 		}
@@ -115,11 +120,9 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		
 		// ask for a lead
 		Card card = players[leader]->play();
-		int cardIndex = getIndexOfCard(card, leader);
-		if(cardIndex == -1) {
-			
+		int cardIndex = getIndexOfCard(card, leader, redoAndFlip);
+		if(cardIndex == -1)
 			throw std::out_of_range("player lead a card not in their hand\n");
-		}
 		trick.cards[0] = card;
 		deck[cardIndex].suit = naught;
 		deck[cardIndex].value = 0;
@@ -130,11 +133,11 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 			if(k < 0)
 				k += 4;
 			Card card = players[k]->play();
-			cardIndex = getIndexOfCard(card, k);
+			cardIndex = getIndexOfCard(card, k, redoAndFlip);
 			if(cardIndex == -1)
 				throw std::out_of_range("player played a card not in their hand\n");
 			if(card.suit != trick.cards[0].suit) {
-				if(!hasVoidInSuit(trick.cards[0].suit, k)) {
+				if(!hasVoidInSuit(trick.cards[0].suit, k, redoAndFlip)) {
 					throw std::out_of_range("player did not follow suit\n");
 				}
 			}
@@ -206,7 +209,9 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 	return std::pair<int, int>(-1, -1);
 }
 
-int Moderator::getIndexOfCard(Card &card, int player) {
+int Moderator::getIndexOfCard(Card &card, int player, bool redoAndFlip) {
+	if(redoAndFlip)
+		player = (player + 1)%4;
 	for (int i = 0; i < 13; i++) {
 		if(deck[i + 13 * player] == card)
 			return i + 13 * player;
@@ -231,7 +236,9 @@ void Moderator::shuffle() {
 	}
 }
 
-int Moderator::hasVoidInSuit(Suit suit, int player) {
+int Moderator::hasVoidInSuit(Suit suit, int player, bool redoAndFlip) {
+	if(redoAndFlip)
+		player = (player + 1)%4;
 	for (int i = 0; i < 13; i++) {
 		if(deck[13 * player + i].suit == suit)
 			return false;

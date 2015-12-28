@@ -14,7 +14,7 @@
 int main(int argc, const char * argv[]) {
 
 	srand(int(time(NULL)));
-	    
+	
     History history;
 	RandomPlayer p1 = RandomPlayer(&history);
 	RandomPlayer p2 = RandomPlayer(&history);
