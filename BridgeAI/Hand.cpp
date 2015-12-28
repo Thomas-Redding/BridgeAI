@@ -8,6 +8,7 @@
 
 #include "Hand.hpp"
 #include <algorithm>
+#include <iostream>
 
 Hand::Hand(const Card* dealt) {
     for (int i = 0; i < handSize; i++) {
@@ -78,4 +79,9 @@ bool Hand::play(Card c) {
     }
     cards[s].erase(cards[s].begin() + i);
     return true;
+}
+
+std::ostream& operator<<(std::ostream& o, const Hand& h) {
+    o << h.cards[0].size() << ", " << h.cards[1].size() << ", " << h.cards[2].size() << ", " << h.cards[3].size();
+    return o;
 }

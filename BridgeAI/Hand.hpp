@@ -27,6 +27,8 @@ public:
     
     const Card& operator[](size_t i) const;
     size_t length() const;
+    
+    friend std::ostream& operator<<(std::ostream& o, const Hand& h);
 };
 
 #endif /* Hand_hpp */
