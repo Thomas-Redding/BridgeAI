@@ -41,6 +41,34 @@ namespace heu {
         return rtn;
     }
     
+    // fourth hand high
+    Heu_return mayTheFourthBeWithYou(const History& history, const Player& player) {
+        Heu_return rtn;
+        if (history.tricks.back().howManyCardsSoFar() != 3) {
+            return rtn;
+        }
+        Suit s = history.tricks.back().cards[0].suit;
+        for (int i = 0; i < numberOfCardsInDeck; i++) {
+            if (i % 13 > 8) {
+                rtn.push_back(std::pair<Card, double>(Card(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit), double(i - 9) / 3));
+            }
+        }
+        return rtn;
+    }
+    
+    Heu_return mayTheThirdBeWithYou(const History& history, const Player& player) {
+        Heu_return rtn;
+        if (history.tricks.back().howManyCardsSoFar() != 2) {
+            return rtn;
+        }
+        for (int i = 0; i < numberOfCardsInDeck; i++) {
+            if (i % 13 > 8) {
+                rtn.push_back(std::pair<Card, double>(Card(Suit(i / numberOfCardsPerSuit), i % numberOfCardsPerSuit), double(i - 9) / 3));
+            }
+        }
+        return rtn;
+    }
+    
 }
 
 #endif /* heu_hpp */
