@@ -75,9 +75,8 @@ int Moderator::play() {
 		// ask for a lead
 		Card card = players[leader]->play();
 		int cardIndex = getIndexOfCard(card, leader);
-		if(cardIndex == -1) {
+		if(cardIndex == -1)
 			throw std::out_of_range("player lead a card not in their hand\n");
-		}
 		trick.cards[0] = card;
 		deck[cardIndex].suit = naught;
 		deck[cardIndex].value = 0;
@@ -89,12 +88,10 @@ int Moderator::play() {
 				k += 4;
 			Card card = players[k]->play();
 			cardIndex = getIndexOfCard(card, k);
-			if(cardIndex == -1) {
+			if(cardIndex == -1)
 				throw std::out_of_range("player played a card not in their hand\n");
-			}
-			if(card.suit != trick.cards[0].suit) {
+			if(card.suit != trick.cards[0].suit)
 				throw std::out_of_range("player did not follow suit\n");
-			}
 			trick.cards[j] = card;
 			deck[cardIndex].suit = naught;
 			deck[cardIndex].value = 0;
@@ -119,9 +116,8 @@ int Moderator::play() {
 
 int Moderator::getIndexOfCard(Card &card, int player) {
 	for (int i=0; i<13; i++) {
-		if(deck[13*i+player] == card) {
+		if(deck[13*i+player] == card)
 			return 13*i+player;
-		}
 	}
 	return -1;
 }
@@ -135,9 +131,8 @@ void Moderator::shuffle() {
 	}
 	for (int i = 0; i < 52; i++) {
 		int r = rand()%sortedDeck.size();
-        if(r < 0) {
+        if(r < 0)
 			r += sortedDeck.size();
-        }
 		deck[i] = sortedDeck[r];
 		sortedDeck.erase(sortedDeck.begin()+r);
 	}
