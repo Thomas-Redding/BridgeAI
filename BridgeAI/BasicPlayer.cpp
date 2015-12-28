@@ -9,6 +9,11 @@
 #include "BasicPlayer.hpp"
 
 Bid BasicPlayer::bid() {
+	if (history->bids.size() == 0) {
+		return Bid(club, 1);
+	}
+	return Bid(naught, 0);
+	/*
 	const std::vector<Bid> &bids = history->bids;
 	if (bids.size() < 4) {
 		// first round of bidding
@@ -38,6 +43,7 @@ Bid BasicPlayer::bid() {
 		}
 	}
     return Bid(naught, 0);
+	*/
 }
 
 template<class F>

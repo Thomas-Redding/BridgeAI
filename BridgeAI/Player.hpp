@@ -26,7 +26,9 @@ public:
     virtual void deal(int id, const Card*, const History* history);
     virtual Bid bid() = 0;
     virtual Card play() = 0;
-	void setPosition(Position pos) { position = pos;}
+	void setPosition(Position pos, const Card* thirdPartyHand) {
+		position = pos;
+	}
 
     Hand* hand;
     const History* history;

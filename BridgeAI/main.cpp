@@ -34,7 +34,7 @@ int main(int argc, const char * argv[]) {
 	srand(int(time(NULL)));
 	std::vector<int> belowLine;
 	std::vector<int> aboveLine;
-	int n = 10000;
+	int n = 1000;
 	for (int i=0; i<n; i++) {
 		History history;
 		BasicPlayer p1 = BasicPlayer(&history);
