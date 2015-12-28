@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		289081081C31ED14001A167C /* heu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 289081061C31ED14001A167C /* heu.cpp */; };
 		28A24F7D1C305F0900A664BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28A24F7C1C305F0900A664BE /* main.cpp */; };
 		28E9E2971C3060C900BC495A /* Moderator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E9E2951C3060C900BC495A /* Moderator.cpp */; };
 		28E9E29A1C30975600BC495A /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E9E2981C30975600BC495A /* Player.cpp */; };
@@ -29,7 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		289081041C31E844001A167C /* heu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heu.hpp; sourceTree = "<group>"; };
+		289081061C31ED14001A167C /* heu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = heu.cpp; sourceTree = "<group>"; };
+		289081071C31ED14001A167C /* heu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heu.hpp; sourceTree = "<group>"; };
 		28A24F791C305F0900A664BE /* BridgeAI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BridgeAI; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A24F7C1C305F0900A664BE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		28E9E2931C305FD800BC495A /* Card.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
@@ -87,11 +89,12 @@
 				EC1A395B1C31B56600628103 /* BasicPlayer.cpp */,
 				EC1A395C1C31B56600628103 /* BasicPlayer.hpp */,
 				28E9E2931C305FD800BC495A /* Card.hpp */,
-				289081041C31E844001A167C /* heu.hpp */,
 				EC41B4C41C3061F600028691 /* Hand.hpp */,
 				EC41B4C31C3061F600028691 /* Hand.cpp */,
 				28E9E29B1C3097A500BC495A /* History.cpp */,
 				28E9E29C1C3097A500BC495A /* History.hpp */,
+				289081061C31ED14001A167C /* heu.cpp */,
+				289081071C31ED14001A167C /* heu.hpp */,
 			);
 			path = BridgeAI;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			files = (
 				28E9E29A1C30975600BC495A /* Player.cpp in Sources */,
 				EC1A395D1C31B56600628103 /* BasicPlayer.cpp in Sources */,
+				289081081C31ED14001A167C /* heu.cpp in Sources */,
 				EC41B4C81C309EB500028691 /* RandomPlayer.cpp in Sources */,
 				EC41B4C51C3061F600028691 /* Hand.cpp in Sources */,
 				28E9E29D1C3097A500BC495A /* History.cpp in Sources */,

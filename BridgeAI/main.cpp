@@ -9,7 +9,7 @@
 #include <iostream>
 #include <time.h>
 #include <cmath>
-
+#include "BasicPlayer.hpp"
 #include "RandomPlayer.hpp"
 #include "Moderator.hpp"
 

@@ -7,8 +7,6 @@
 //
 
 #include "Hand.hpp"
-#include <algorithm>
-#include <iostream>
 
 Hand::Hand(const Card* dealt) {
     for (int i = 0; i < handSize; i++) {

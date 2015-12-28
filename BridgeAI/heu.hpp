@@ -10,34 +10,17 @@
 #define heu_hpp
 
 #include <stdio.h>
-
-#define Heu_return std::vector<std::pair<Card, double>>
+#include <vector>
+#include "Card.hpp"
+#include "History.hpp"
+#include "Player.hpp"
 
 namespace heu {
-	// Tend to play the highest or lowest card in a suit
-	Heu_return playExtremes(const History& history, const Player& player) {
-		Heu_return rtn;
-		for (int i = 0; i < numberOfSuits; i++) {
-			if(player.hand->cards[i].size() >= 2) {
-				rtn.push_back(std::pair<Card, double>(player.hand->cards[i].front(), 1.0));
-				rtn.push_back(std::pair<Card, double>(player.hand->cards[i].back(), 1.0));
-			}
-		}
-		return rtn;
-	}
-	
-	// Trump tricks if possible
-	Heu_return trumpet(const History& history, const Player& player) {
-		Heu_return rtn;
-		if (history.isTrickEmpty()) {
-			return rtn;
-		}
-		Suit suit = history.tricks.back().cards[0].suit;
-		for (int i = 0; i < numberOfCardsPerSuit; i++) {
-			rtn.push_back(std::pair<Card, double>(Card(suit, i), 1.0));
-		}
-		return rtn;
-	}
+	std::vector<std::pair<Card, double>> playExtremes(const History& history, const Player& player);
+	std::vector<std::pair<Card, double>> trumpet(const History& history, const Player& player);
+	bool better(const Card& old, const Card& c, Suit trump);
+	std::vector<std::pair<Card, double>> mayTheFourthBeWithYou(const History& history, const Player& player);
+	std::vector<std::pair<Card, double>> mayTheThirdBeWithYou(const History& history, const Player& player);
 }
 
 #endif /* heu_hpp */

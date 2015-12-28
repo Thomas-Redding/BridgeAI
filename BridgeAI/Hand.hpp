@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <vector>
 #include <array>
+#include <algorithm>
+#include <iostream>
 #include "Card.hpp"
 
 class Hand {
