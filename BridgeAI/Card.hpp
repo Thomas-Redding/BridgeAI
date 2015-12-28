@@ -10,6 +10,7 @@
 #define Card_hpp
 
 #include <stdio.h>
+#include <iostream>
 
 enum Suit {
 	naught = -1,
@@ -40,6 +41,22 @@ public:
 	
 	bool operator==(const Card &other) const {
 		return suit == other.suit && value == other.value;
+	}
+	
+	friend std::ostream& operator<<(std::ostream& o, const Card& c) {
+		if(c.suit == club)
+			o << c.value << 'C';
+		else if(c.suit == diamond)
+			o << c.value << 'D';
+		else if(c.suit == heart)
+			o << c.value << 'H';
+		else if(c.suit == spade)
+			o << c.value << 'S';
+		else if(c.suit == notrump)
+			o << c.value << 'N';
+		else
+			o << c.value << 'X';
+		return o;
 	}
 };
 

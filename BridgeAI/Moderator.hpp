@@ -19,10 +19,11 @@
 class Moderator {
 public:
     Moderator(Player* A, Player* B, Player* C, Player* D, History& history);
-    std::pair<int, int> play();
+    std::pair<int, int> play(bool redoAndFlip);
     
 private:
     Card deck[52];
+	Card lastDeck[52];
     Player *players[4];
     History &history;
 	

@@ -15,8 +15,7 @@ Moderator::Moderator(Player* A, Player* B, Player* C, Player* D, History &hist) 
     players[3] = D;
 }
 
-std::pair<int, int> Moderator::play() {
-	
+std::pair<int, int> Moderator::play(bool redoAndFlip) {
     // deal cards
     shuffle();
     players[0]->deal(0, &deck[0], &history);
@@ -110,6 +109,7 @@ std::pair<int, int> Moderator::play() {
 			throw std::out_of_range("player lead a card not in their hand\n");
 		}
 		trick.cards[0] = card;
+		std::cout << leader << ": " << card << ",";
 		deck[cardIndex].suit = naught;
 		deck[cardIndex].value = 0;
 		
@@ -128,9 +128,12 @@ std::pair<int, int> Moderator::play() {
 				}
 			}
 			trick.cards[j] = card;
+			std::cout << card << ",";
 			deck[cardIndex].suit = naught;
 			deck[cardIndex].value = 0;
 		}
+		
+		std::cout << "\n\n";
 		
 		// determine who won - todo
 		int winner = 0;
@@ -158,16 +161,17 @@ std::pair<int, int> Moderator::play() {
 	}
 	
 	// score game
+	int bidLevel = lastBid.level + 6;
 	if(dummyPlayer%2 == 0) {
 		// We won the bidding
-		if(trickCount >= lastBid.level) {
+		if(trickCount >= bidLevel) {
 			// made contract
 			if(lastBid.suit == club || lastBid.suit == diamond)
-				return std::pair<int, int>(20*lastBid.level, 20*(trickCount-lastBid.level));
+				return std::pair<int, int>(20*lastBid.level, 20*(trickCount-bidLevel));
 			else if(lastBid.suit == heart || lastBid.suit == spade)
-				return std::pair<int, int>(30*lastBid.level, 30*(trickCount-lastBid.level));
+				return std::pair<int, int>(30*lastBid.level, 30*(trickCount-bidLevel));
 			else if(lastBid.suit == notrump)
-				return std::pair<int, int>(10+30*lastBid.level, 30*(trickCount-lastBid.level));
+				return std::pair<int, int>(10+30*lastBid.level, 30*(trickCount-bidLevel));
 			else
 				throw std::out_of_range("error\n");
 		}
@@ -180,11 +184,11 @@ std::pair<int, int> Moderator::play() {
 		if(trickCount >= lastBid.level) {
 			// made contract
 			if(lastBid.suit == club || lastBid.suit == diamond)
-				return std::pair<int, int>(-20*lastBid.level, -20*(trickCount-lastBid.level));
+				return std::pair<int, int>(-20*lastBid.level, -20*(trickCount-bidLevel));
 			else if(lastBid.suit == heart || lastBid.suit == spade)
-				return std::pair<int, int>(-30*lastBid.level, -30*(trickCount-lastBid.level));
+				return std::pair<int, int>(-30*lastBid.level, -30*(trickCount-bidLevel));
 			else if(lastBid.suit == notrump)
-				return std::pair<int, int>(-10-30*lastBid.level, -30*(trickCount-lastBid.level));
+				return std::pair<int, int>(-10-30*lastBid.level, -30*(trickCount-bidLevel));
 			else
 				throw std::out_of_range("error\n");
 		}
@@ -214,6 +218,7 @@ void Moderator::shuffle() {
         if(r < 0)
 			r += sortedDeck.size();
 		deck[i] = sortedDeck[r];
+		lastDeck[i] = deck[i];
 		sortedDeck.erase(sortedDeck.begin()+r);
 	}
 }
