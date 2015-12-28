@@ -16,3 +16,9 @@ void Player::deal(int givenId, const Card* dealtCards, const History* givenHisto
     hand = new Hand(dealtCards);
     history = givenHistory;
 }
+
+void Player::setPosition(Position pos, const Hand* b, const Hand* c) {
+    position = pos;
+    dummyHand = b;
+    offenseHand = c;
+}
