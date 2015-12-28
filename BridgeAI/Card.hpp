@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include <iostream>
 
+#define numberOfCardsInDeck 52
+#define numberOfSuits 4
+#define numberOfCardsPerSuit 13
+
 enum Suit {
 	naught = -1,
 	club = 0,

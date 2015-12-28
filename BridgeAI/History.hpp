@@ -20,7 +20,7 @@ struct Bid {
 
 struct Trick {
 	int leader;
-	Card cards[4];
+	Card cards[numberOfSuits];
 };
 
 class History {
