@@ -26,10 +26,11 @@ private:
 	Card lastDeck[52];
     Player *players[4];
     History &history;
+	History originalHistory;
 	
 	void shuffle();
-	int getIndexOfCard(Card &card, int player);
-	int hasVoidInSuit(Suit suit, int player);
+	int getIndexOfCard(Card &card, int player, bool redoAndFlip);
+	int hasVoidInSuit(Suit suit, int player, bool redoAndFlip);
 };
 
 #endif /* Moderator_hpp */
