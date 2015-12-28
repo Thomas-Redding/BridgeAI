@@ -18,13 +18,6 @@ Moderator::Moderator(Player* A, Player* B, Player* C, Player* D, History &hist) 
 std::pair<int, int> Moderator::play(bool redoAndFlip) {
     // deal cards
 	if(redoAndFlip) {
-		shuffle();
-		players[0]->deal(0, &deck[0], &history);
-		players[1]->deal(1, &deck[13], &history);
-		players[2]->deal(2, &deck[26], &history);
-		players[3]->deal(3, &deck[39], &history);
-	}
-	else {
 		for (int i=0; i<52; i++) {
 			deck[i] = lastDeck[i];
 		}
@@ -32,6 +25,13 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 		players[1]->deal(2, &deck[26], &history);
 		players[2]->deal(3, &deck[39], &history);
 		players[3]->deal(0, &deck[0], &history);
+	}
+	else {
+		shuffle();
+		players[0]->deal(0, &deck[0], &history);
+		players[1]->deal(1, &deck[13], &history);
+		players[2]->deal(2, &deck[26], &history);
+		players[3]->deal(3, &deck[39], &history);
 	}
 	
 	

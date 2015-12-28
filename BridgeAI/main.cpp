@@ -23,8 +23,9 @@ int main(int argc, const char * argv[]) {
 	RandomPlayer p4 = RandomPlayer(&history);
 	Moderator mod = Moderator(&p1, &p2, &p3, &p4, history);
 	std::pair<int, int> result = mod.play(false);
-    
-    std::cout << "Result: " << result.first << ", " << result.second << std::endl;
+    std::cout << "Result A: " << result.first << ", " << result.second << std::endl;
+	result = mod.play(true);
+	std::cout << "Result B: " << result.first << ", " << result.second << std::endl;
 	
     return 0;
 }
