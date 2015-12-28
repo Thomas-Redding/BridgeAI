@@ -17,7 +17,7 @@ namespace heu {
 	// Tend to play the highest or lowest card in a suit
 	std::pair<std::vector<Card>, std::vector<double>> playExtremes(const History& history, const Hand& hand) {
 		std::pair<std::vector<Card>, std::vector<double>> rtn;
-		for (int i=0; i<hand.numberOfSuits; i++) {
+		for (int i = 0; i < hand.numberOfSuits; i++) {
 			if(hand.cards[i].size() >= 2) {
 				rtn.first.push_back(hand.cards[i][0]);
 				rtn.second.push_back(1);

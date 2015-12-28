@@ -130,7 +130,7 @@ void Moderator::shuffle() {
 		}
 	}
 	for (int i = 0; i < 52; i++) {
-		int r = rand()%sortedDeck.size();
+		int r = rand() % sortedDeck.size();
         if(r < 0)
 			r += sortedDeck.size();
 		deck[i] = sortedDeck[r];
