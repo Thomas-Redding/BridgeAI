@@ -27,6 +27,7 @@ std::pair<int, int> Moderator::play() {
 	// bid
 	int passCount = 0;
 	Bid currentBid = Bid(naught, 0);
+	Bid lastBid = currentBid;
 	int lastBidPerson = 0;
 	while (true) {
 		if(passCount >= 4)
@@ -43,15 +44,18 @@ std::pair<int, int> Moderator::play() {
 				passCount = 0;
 				history.bids.push_back(bid);
 				lastBidPerson = i;
+				lastBid = bid;
 			}
 			else
 				throw std::out_of_range("illegal bid\n");
 		}
 	}
 	
+	if(lastBid.suit == naught && lastBid.level == 0)
+		return std::pair<int, int>(0, 0); // all passes
+	
 	// find dummy
 	int dummy;
-	Bid &lastBid = history.bids[history.bids.size()-1];
 	for (int i = 0; i < history.bids.size(); i++) {
 		if (i % 2 == lastBidPerson%2) {
 			if(history.bids[i].suit == lastBid.suit) {
@@ -136,8 +140,10 @@ std::pair<int, int> Moderator::play() {
 				return std::pair<int, int>(20*lastBid.level, 20*(trickCount-lastBid.level));
 			else if(lastBid.suit == heart || lastBid.suit == spade)
 				return std::pair<int, int>(30*lastBid.level, 30*(trickCount-lastBid.level));
-			else
+			else if(lastBid.suit == notrump)
 				return std::pair<int, int>(10+30*lastBid.level, 30*(trickCount-lastBid.level));
+			else
+				throw std::out_of_range("error\n");
 		}
 		else
 			return std::pair<int, int>(0, 50*(trickCount-lastBid.level)); // lost contract
@@ -151,14 +157,15 @@ std::pair<int, int> Moderator::play() {
 				return std::pair<int, int>(-20*lastBid.level, -20*(trickCount-lastBid.level));
 			else if(lastBid.suit == heart || lastBid.suit == spade)
 				return std::pair<int, int>(-30*lastBid.level, -30*(trickCount-lastBid.level));
-			else
+			else if(lastBid.suit == notrump)
 				return std::pair<int, int>(-10-30*lastBid.level, -30*(trickCount-lastBid.level));
+			else
+				throw std::out_of_range("error\n");
 		}
 		else
 			return std::pair<int, int>(0, -50*(trickCount-lastBid.level)); // lost contract
 	}
-	
-	
+	return std::pair<int, int>(-1, -1);
 }
 
 int Moderator::getIndexOfCard(Card &card, int player) {
