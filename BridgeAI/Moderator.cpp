@@ -73,8 +73,10 @@ int Moderator::play() {
 		// ask for a lead
 		Card card = players[leader]->play();
 		int cardIndex = getIndexOfCard(card, leader);
-		if(cardIndex == -1)
+		if(cardIndex == -1) {
+			
 			throw std::out_of_range("player lead a card not in their hand\n");
+		}
 		trick.cards[0] = card;
 		deck[cardIndex].suit = naught;
 		deck[cardIndex].value = 0;
@@ -114,8 +116,8 @@ int Moderator::play() {
 
 int Moderator::getIndexOfCard(Card &card, int player) {
 	for (int i = 0; i < 13; i++) {
-		if(deck[13 * i + player] == card)
-			return 13 * i + player;
+		if(deck[i + 13 * player] == card)
+			return i + 13 * player;
 	}
 	return -1;
 }

@@ -20,5 +20,6 @@ Card RandomPlayer::play() {
     if (!hand->play(0)) {
         throw std::runtime_error("Something went wrong");
     }
+	
     return c;
 }
