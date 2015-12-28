@@ -26,11 +26,11 @@ public:
     virtual void deal(int id, const Card*, const History* history);
     virtual Bid bid() = 0;
     virtual Card play() = 0;
-	void setPosition(Position pos, const Card* dummyHand, const Card* offenseHand) {
-		position = pos;
-	}
+    void setPosition(Position pos, const Hand* dummyHand, const Hand* offenseHand);
 
     Hand* hand;
+    const Hand* dummyHand;
+    const Hand* offenseHand;
     const History* history;
     int id;
 	Position position;
