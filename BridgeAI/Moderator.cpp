@@ -89,57 +89,32 @@ std::pair<int, int> Moderator::play(bool redoAndFlip) {
 	int trickCount = 0;
 	
 	// give players positions
-	if (redoAndFlip) {
-		if (dummyPlayer == 0) {
-			players[0]->setPosition(dummy, nullptr, &deck[39]);
-			players[1]->setPosition(right_of_dummy, &deck[13], nullptr);
-			players[2]->setPosition(offense, &deck[13], nullptr);
-			players[3]->setPosition(left_of_dummy, &deck[13], nullptr);
-		}
-		else if (dummyPlayer == 1) {
-			players[1]->setPosition(dummy, nullptr, &deck[0]);
-			players[2]->setPosition(right_of_dummy, &deck[26], nullptr);
-			players[3]->setPosition(offense, &deck[26], nullptr);
-			players[0]->setPosition(left_of_dummy, &deck[26], nullptr);
-		}
-		else if (dummyPlayer == 2) {
-			players[2]->setPosition(dummy, nullptr, &deck[13]);
-			players[3]->setPosition(right_of_dummy, &deck[39], nullptr);
-			players[0]->setPosition(offense, &deck[39], nullptr);
-			players[1]->setPosition(left_of_dummy, &deck[39], nullptr);
-		}
-		else if (dummyPlayer == 3) {
-			players[3]->setPosition(dummy, nullptr, &deck[26]);
-			players[0]->setPosition(right_of_dummy, &deck[0], nullptr);
-			players[1]->setPosition(offense, &deck[0], nullptr);
-			players[2]->setPosition(left_of_dummy, &deck[0], nullptr);
-		}
+	if (dummyPlayer == 0) {
+		players[0]->setPosition(dummy, nullptr, players[2]->hand);
+		players[1]->setPosition(right_of_dummy, players[0]->hand, nullptr);
+		players[2]->setPosition(offense, players[0]->hand, nullptr);
+		players[3]->setPosition(left_of_dummy, players[0]->hand, nullptr);
+	}
+	else if (dummyPlayer == 1) {
+		players[1]->setPosition(dummy, nullptr, players[3]->hand);
+		players[2]->setPosition(right_of_dummy, players[1]->hand, nullptr);
+		players[3]->setPosition(offense, players[1]->hand, nullptr);
+		players[0]->setPosition(left_of_dummy, players[1]->hand, nullptr);
+	}
+	else if (dummyPlayer == 2) {
+		players[2]->setPosition(dummy, nullptr, players[4]->hand);
+		players[3]->setPosition(right_of_dummy, players[2]->hand, nullptr);
+		players[0]->setPosition(offense, players[2]->hand, nullptr);
+		players[1]->setPosition(left_of_dummy, &players[2]->hand, nullptr);
+	}
+	else if (dummyPlayer == 3) {
+		players[3]->setPosition(dummy, nullptr, players[1]->hand);
+		players[0]->setPosition(right_of_dummy, players[3]->hand, nullptr);
+		players[1]->setPosition(offense, players[3]->hand, nullptr);
+		players[2]->setPosition(left_of_dummy, players[3]->hand, nullptr);
 	}
 	else {
-		if (dummyPlayer == 0) {
-			players[0]->setPosition(dummy, nullptr, &deck[26]);
-			players[1]->setPosition(right_of_dummy, &deck[0], nullptr);
-			players[2]->setPosition(offense, &deck[0], nullptr);
-			players[3]->setPosition(left_of_dummy, &deck[0], nullptr);
-		}
-		else if (dummyPlayer == 1) {
-			players[1]->setPosition(dummy, nullptr, &deck[39]);
-			players[2]->setPosition(right_of_dummy, &deck[13], nullptr);
-			players[3]->setPosition(offense, &deck[13], nullptr);
-			players[0]->setPosition(left_of_dummy, &deck[13], nullptr);
-		}
-		else if (dummyPlayer == 2) {
-			players[2]->setPosition(dummy, nullptr, &deck[0]);
-			players[3]->setPosition(right_of_dummy, &deck[26], nullptr);
-			players[0]->setPosition(offense, &deck[26], nullptr);
-			players[1]->setPosition(left_of_dummy, &deck[26], nullptr);
-		}
-		else if (dummyPlayer == 3) {
-			players[3]->setPosition(dummy, nullptr, &deck[13]);
-			players[0]->setPosition(right_of_dummy, &deck[39], nullptr);
-			players[1]->setPosition(offense, &deck[39], nullptr);
-			players[2]->setPosition(left_of_dummy, &deck[39], nullptr);
-		}
+		throw std::out_of_range("error");
 	}
 	
 	for (int i = 0; i < 13; i++) {
