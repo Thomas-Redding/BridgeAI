@@ -21,6 +21,7 @@ struct Bid {
 struct Trick {
 	int leader;
 	Card cards[4];
+    bool isEmpty() const;
 };
 
 class History {

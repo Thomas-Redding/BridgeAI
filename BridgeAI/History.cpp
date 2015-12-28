@@ -7,3 +7,7 @@
 //
 
 #include "History.hpp"
+
+bool Trick::isEmpty() const {
+    return cards[0].suit == naught;
+}

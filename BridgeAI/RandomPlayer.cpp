@@ -16,10 +16,30 @@ Bid RandomPlayer::bid() {
 }
 
 Card RandomPlayer::play() {
-    Card c = (*hand)[0];
-    if (!hand->play(0)) {
+    
+    if (history->tricks.back().isEmpty()) {
+        // play first card
+        Card c = (*hand)[0];
+        if (!hand->play(0)) {
+            throw std::runtime_error("Something went wrong");
+        }
+        return c;
+    }
+    
+    // try to follow suit
+    Suit suit = history->tricks.back().cards[0].suit;
+    if (hand->cards[int(suit)].size() == 0) {
+        // play first card
+        Card c = (*hand)[0];
+        if (!hand->play(0)) {
+            throw std::runtime_error("Something went wrong");
+        }
+        return c;
+    }
+    
+    Card c = hand->cards[int(suit)][0];
+    if (!hand->play(c)) {
         throw std::runtime_error("Something went wrong");
     }
-	
     return c;
 }
