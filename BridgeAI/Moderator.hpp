@@ -17,7 +17,7 @@
 
 class Moderator {
 public:
-    Moderator(Player* A, Player* B, Player* C, Player* D);
+    Moderator(Player* A, Player* B, Player* C, Player* D, History& history);
     int play();
     
 private:
