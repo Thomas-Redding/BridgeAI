@@ -72,3 +72,66 @@ std::vector<std::pair<Card, double>> heu::mayTheThirdBeWithYou(const History& hi
 	}
 	return rtn;
 }
+
+// if you're on offense try to lead to a high card in your partner's hand
+std::vector<std::pair<Card, double>> heu::offenseForceWins(const History& history, const Player& player) {
+	std::vector<std::pair<Card, double>> rtn;
+    
+    if (history.tricks.back().howManyCardsSoFar() != 0) {
+        return rtn;
+    }
+    if (player.position == left_of_dummy || player.position == right_of_dummy) {
+        return rtn;
+    }
+    
+    // find what cards have been played so far
+    bool played[numberOfSuits][numberOfCardsPerSuit];
+    for (int i = 0; i < numberOfSuits; i++) {
+        std::fill(played[i], played[i] + numberOfCardsPerSuit, false);
+    }
+    for (int i = 0; i < history.tricks.size(); i++) {
+        const Card* c;
+        c = &history.tricks[i].cards[0];
+        played[int(c->suit)][c->value] = true;
+        c = &history.tricks[i].cards[1];
+        played[int(c->suit)][c->value] = true;
+        c = &history.tricks[i].cards[2];
+        played[int(c->suit)][c->value] = true;
+        c = &history.tricks[i].cards[3];
+        played[int(c->suit)][c->value] = true;
+    }
+    
+    // find the highest card in every suit
+    int highest[numberOfSuits];
+    for (int i = 0; i < numberOfSuits; i++) {
+        int j = numberOfCardsPerSuit - 1;
+        while (j >= 0 && played[j]) {
+            j--;
+        }
+        highest[i] = j;
+    }
+    
+    // for every suit, check if I or my partner has the highest card
+    if (player.position == offense) {
+        for (int i = 0; i < numberOfSuits; i++) {
+            if (player.hand->cards[i].back().value == highest[i]) {
+                rtn.push_back(std::pair<Card, double>(Card(Suit(i), highest[i]), 1.0));
+            }
+            else if (player.dummyHand->cards[i].back().value == highest[i]) {
+                rtn.push_back(std::pair<Card, double>(Card(Suit(i), highest[i]), 1.0));
+            }
+        }
+    }
+    else { // dummy
+        for (int i = 0; i < numberOfSuits; i++) {
+            if (player.hand->cards[i].back().value == highest[i]) {
+                rtn.push_back(std::pair<Card, double>(Card(Suit(i), highest[i]), 1.0));
+            }
+            else if (player.offenseHand->cards[i].back().value == highest[i]) {
+                rtn.push_back(std::pair<Card, double>(Card(Suit(i), highest[i]), 1.0));
+            }
+        }
+    }
+    
+    return rtn;
+}

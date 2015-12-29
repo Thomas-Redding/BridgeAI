@@ -85,6 +85,11 @@ Card BasicPlayer::play() {
 	for (int i = 0; i < b.size(); i++) {
 		a[b[i].first.toIndex()].second += b[i].second;
 	}
+    
+    b = heu::offenseForceWins(*history, *this);
+    for (int i = 0; i < b.size(); i++) {
+        a[b[i].first.toIndex()].second += b[i].second;
+    }
 	
     // find "best" card in my hand that is ALSO legal
     

@@ -21,6 +21,7 @@ namespace heu {
 	bool better(const Card& old, const Card& c, Suit trump);
 	std::vector<std::pair<Card, double>> mayTheFourthBeWithYou(const History& history, const Player& player);
 	std::vector<std::pair<Card, double>> mayTheThirdBeWithYou(const History& history, const Player& player);
+    std::vector<std::pair<Card, double>> offenseForceWins(const History& history, const Player& player);
 }
 
 #endif /* heu_hpp */
