@@ -16,6 +16,50 @@ struct Bid {
     Bid(Suit suit, int level) : level(level), suit(suit) {};
 	int level;
 	Suit suit;
+	
+	bool operator<(const Bid& other) const {
+		if (level < other.level) {
+			return true;
+		}
+		else if (level > other.level) {
+			return false;
+		}
+		else
+			return suit < other.suit;
+	}
+	
+	bool operator>(const Bid& other) const {
+		if (level > other.level) {
+			return true;
+		}
+		else if (level < other.level) {
+			return false;
+		}
+		else
+			return suit > other.suit;
+	}
+	
+	bool operator==(const Bid& other) const {
+		return level == other.level && suit == other.suit;
+	}
+	
+	bool operator<=(const Bid& other) const {
+		if (level < other.level)
+			return true;
+		else if (level > other.level)
+			return false;
+		else
+			return suit <= other.suit;
+	}
+	
+	bool operator>=(const Bid& other) const {
+		if (level > other.level)
+			return true;
+		else if (level < other.level)
+			return false;
+		else
+			return suit >= other.suit;
+	}
 };
 
 struct Trick {
