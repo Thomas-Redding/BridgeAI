@@ -22,7 +22,11 @@ public:
     Card play();
 private:
 	int computeHcp();
-	int cachedHcp = -1;
+	Suit computeLongestSuit();
+	int findTeamOpen(int team);
+	int indexOfLastBid(int player);
+	int numberOfBids(int player);
+	Bid mostRecentBid();
 };
 
 #endif /* BasicPlayer_hpp */

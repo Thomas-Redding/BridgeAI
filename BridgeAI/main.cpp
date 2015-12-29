@@ -31,11 +31,12 @@ double stdev(std::vector<int> &vect) {
 }
 
 int main(int argc, const char * argv[]) {
-	srand(int(time(NULL)));
+//	srand(int(time(NULL)));
 	std::vector<int> belowLine;
 	std::vector<int> aboveLine;
-	int n = 1000;
+	int n = 100;
 	for (int i=0; i<n; i++) {
+		srand(i);
 		History history;
 		BasicPlayer p1 = BasicPlayer(&history);
 		RandomPlayer p2 = RandomPlayer(&history);
